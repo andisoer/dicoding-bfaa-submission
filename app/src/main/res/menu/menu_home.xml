@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_baseline_settings_24"/>
 
     <item
-        android:id="@+id/menuFavorite"
+        android:id="@+id/favoriteFragment"
         android:title="Favorite"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_baseline_favorite_24"/>
