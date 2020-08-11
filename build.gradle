@@ -10,6 +10,7 @@ buildscript {
         supportlibVersion = '1.2.0'
         navigationVersion = '1.0.0-rc02'
         glide_version = "4.11.0"
+        dataBindingCompilerVersion = gradle_version
     }
 
     repositories {

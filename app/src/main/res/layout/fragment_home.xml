@@ -1,63 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="Github User"
-            app:menu="@menu/menu_home"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
+            android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="16dp">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/tbFragmentHome"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="Github User"
+                app:titleTextColor="@android:color/white"
+                app:menu="@menu/menu_home"/>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="10"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_home_search">
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
 
-                <EditText
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="9"
-                    android:hint="Search . . ."
-                    android:background="@null"
-                    android:textColorHint="@android:color/white"
-                    android:imeOptions="actionSearch"
-                    android:padding="16dp"/>
+                    android:weightSum="10"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_home_search">
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_baseline_search_24"/>
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"
+                        android:hint="Search . . ."
+                        android:background="@null"
+                        android:textColorHint="@android:color/white"
+                        android:imeOptions="actionSearch"
+                        android:padding="16dp"/>
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_baseline_search_24"/>
 
-        </RelativeLayout>
+                </LinearLayout>
 
-    </com.google.android.material.appbar.AppBarLayout>
+            </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        tools:listitem="@layout/item_user"/>
+        </com.google.android.material.appbar.AppBarLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            tools:listitem="@layout/item_user"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
