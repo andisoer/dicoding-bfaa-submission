@@ -9,6 +9,7 @@ buildscript {
         gradle_version = '4.0.1'
         supportlibVersion = '1.2.0'
         navigationVersion = '1.0.0-rc02'
+        glide_version = "4.11.0"
     }
 
     repositories {
