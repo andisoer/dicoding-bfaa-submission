@@ -1,4 +1,4 @@
-package com.soerjdev.dicodingbfaasubmission
+package com.soerjdev.dicodingbfaasubmission.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
+import com.soerjdev.dicodingbfaasubmission.R
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentSettingsBinding
 
 
@@ -21,7 +21,8 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<FragmentSettingsBinding>(inflater, R.layout.fragment_settings, container, false)
+        val binding = DataBindingUtil.inflate<FragmentSettingsBinding>(inflater,
+            R.layout.fragment_settings, container, false)
 
         binding.tbFragmentSettings.setNavigationOnClickListener {
             activity?.onBackPressed()

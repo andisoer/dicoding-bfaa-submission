@@ -1,10 +1,8 @@
-package com.soerjdev.dicodingbfaasubmission
+package com.soerjdev.dicodingbfaasubmission.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
+import com.soerjdev.dicodingbfaasubmission.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
