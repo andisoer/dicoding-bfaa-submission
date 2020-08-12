@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
-import com.soerjdev.dicodingbfaasubmission.databinding.FragmentSettingsBinding
+import com.soerjdev.dicodingbfaasubmission.databinding.FragmentFollowerBinding
 
-
-class SettingsFragment : Fragment() {
+class FollowerFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,12 +18,7 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val binding = DataBindingUtil.inflate<FragmentSettingsBinding>(inflater, R.layout.fragment_settings, container, false)
-
-        binding.tbFragmentSettings.setNavigationOnClickListener {
-            activity?.onBackPressed()
-        }
+        val binding = DataBindingUtil.inflate<FragmentFollowerBinding>(inflater, R.layout.fragment_follower, container, false)
 
         return binding.root
     }

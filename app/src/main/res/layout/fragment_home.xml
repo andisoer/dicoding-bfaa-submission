@@ -38,10 +38,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="9"
-                        android:hint="Search . . ."
+                        android:hint="Search"
                         android:background="@null"
                         android:textColorHint="@android:color/white"
                         android:imeOptions="actionSearch"
+                        android:inputType="text"
                         android:padding="16dp"/>
 
                     <ImageView

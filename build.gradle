@@ -10,6 +10,8 @@ buildscript {
         supportlibVersion = '1.2.0'
         navigationVersion = '1.0.0-rc02'
         glide_version = "4.11.0"
+        retrofit_version = "2.9.0"
+        okhttp_version = "4.5.0"
         dataBindingCompilerVersion = gradle_version
     }
 

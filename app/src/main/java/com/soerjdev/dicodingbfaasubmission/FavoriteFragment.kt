@@ -26,7 +26,7 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         val binding = DataBindingUtil.inflate<FragmentFavoriteBinding>(inflater, R.layout.fragment_favorite, container, false)
 
         binding.tbFragmentFavorite.setNavigationOnClickListener {
-            view!!.findNavController().navigateUp()
+            activity?.onBackPressed()
         }
 
         binding.tbFragmentFavorite.setOnMenuItemClickListener(this)
