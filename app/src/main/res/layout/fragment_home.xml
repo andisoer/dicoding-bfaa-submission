@@ -35,6 +35,7 @@
                     android:background="@drawable/bg_home_search">
 
                     <EditText
+                        android:id="@+id/edtSearchHome"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="9"
@@ -46,6 +47,7 @@
                         android:padding="16dp"/>
 
                     <ImageView
+                        android:id="@+id/ivSearchHome"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -59,10 +61,17 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvUserListHome"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             tools:listitem="@layout/item_user"/>
+
+        <ProgressBar
+            android:id="@+id/pbLoadHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

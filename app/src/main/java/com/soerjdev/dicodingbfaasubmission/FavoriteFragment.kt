@@ -42,6 +42,6 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         return NavigationUI.onNavDestinationSelected(item!!,
-            view!!.findNavController())
+            requireView().findNavController())
     }
 }
