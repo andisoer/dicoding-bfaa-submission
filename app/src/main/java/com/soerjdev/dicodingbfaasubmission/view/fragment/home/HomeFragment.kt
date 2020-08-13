@@ -36,14 +36,16 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_home, container, false)
 
+        adapter = UserSearchAdapter(requireContext(), this@HomeFragment)
+
+        if (adapter.itemCount > 0) Log.d(TAG, "onCreateView: not empty")
+
         binding.apply {
             tbFragmentHome.setOnMenuItemClickListener(this@HomeFragment)
 
             ivSearchHome.setOnClickListener {
                 searchUser()
             }
-
-            adapter = UserSearchAdapter(requireContext(), this@HomeFragment)
 
             rvUserListHome.layoutManager = LinearLayoutManager(context)
             rvUserListHome.adapter = adapter
@@ -54,16 +56,25 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
         return binding.root
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        Log.d(TAG, "onActivityCreated()")
+        observeDataUserSearch(binding.edtSearchHome.text.toString())
+    }
+
     private fun searchUser() {
         binding.apply {
             if (!edtSearchHome.text.isBlank()){
                 pbLoadHome.show()
                 observeDataUserSearch(edtSearchHome.text.toString())
+                Log.d(TAG, "searchUser()")
             }
         }
     }
 
     private fun observeDataUserSearch(query: String) {
+        Log.d(TAG, "observeDataUserSearch()")
         homeFragmentViewModel.getUserBySearch(query = query).observe(
             viewLifecycleOwner, Observer {  status ->
                 when (status.status) {

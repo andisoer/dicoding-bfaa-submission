@@ -17,6 +17,12 @@ class DetailProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentDetailProfileBinding>(inflater, R.layout.fragment_detail_profile, container, false)
 
+        binding.apply {
+            tbFragmentDetailProfile.setNavigationOnClickListener {
+
+            }
+        }
+
         return binding.root
     }
 
