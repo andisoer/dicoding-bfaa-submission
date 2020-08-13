@@ -13,24 +13,19 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.soerjdev.dicodingbfaasubmission.R
-import com.soerjdev.dicodingbfaasubmission.Status
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.soerjdev.dicodingbfaasubmission.*
+import com.soerjdev.dicodingbfaasubmission.data.SearchResponse
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentHomeBinding
-import com.soerjdev.dicodingbfaasubmission.hide
-import com.soerjdev.dicodingbfaasubmission.show
 
-class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener {
+class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdapter.Listener {
 
     private lateinit var homeFragmentViewModel: HomeFragmentViewModel
     private lateinit var binding: FragmentHomeBinding
-
+    private lateinit var adapter : UserSearchAdapter
 
     companion object {
         var TAG = HomeFragment::class.java.simpleName
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -38,7 +33,7 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_home, container, false)
 
         binding.apply {
@@ -47,6 +42,11 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             ivSearchHome.setOnClickListener {
                 searchUser()
             }
+
+            adapter = UserSearchAdapter(requireContext(), this@HomeFragment)
+
+            rvUserListHome.layoutManager = LinearLayoutManager(context)
+            rvUserListHome.adapter = adapter
         }
 
         setHasOptionsMenu(true)
@@ -70,7 +70,7 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                     Status.Type.SUCCESS -> {
                         status.data?.apply {
                             if (this.totalCount > 0) {
-                                Log.d(TAG, "observeDataUserSearch: ${this.items} ")
+                                adapter.setUserSearchData(this.items)
                             }else {
                                 Log.d(TAG, "observeDataUserSearch: empty")
                             }
@@ -86,20 +86,22 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         init()
 
         super.onViewCreated(view, savedInstanceState)
     }
 
     private fun init() {
-
         homeFragmentViewModel = ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
-
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         return NavigationUI.onNavDestinationSelected(item!!,
             requireView().findNavController())
+    }
+
+    override fun onUserClickListenre(view: View, data: SearchResponse) {
+        val navigation = HomeFragmentDirections.actionHomeFragmentToDetailProfileFragment(data.login, null)
+        view.findNavController().navigate(navigation)
     }
 }

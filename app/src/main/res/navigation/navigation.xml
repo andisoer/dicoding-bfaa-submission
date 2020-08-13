@@ -28,6 +28,13 @@
         <action
             android:id="@+id/action_detailProfileFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="userDetail"
+            app:argType="com.soerjdev.dicodingbfaasubmission.data.UserDetail"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

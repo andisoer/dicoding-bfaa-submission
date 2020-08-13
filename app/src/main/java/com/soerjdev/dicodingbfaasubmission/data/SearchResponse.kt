@@ -1,8 +1,10 @@
 package com.soerjdev.dicodingbfaasubmission.data
 
-
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class SearchResponse(
     @SerializedName("avatar_url")
     val avatarUrl: String,
@@ -42,4 +44,4 @@ data class SearchResponse(
     val type: String,
     @SerializedName("url")
     val url: String
-)
+) : Parcelable
