@@ -1,8 +1,8 @@
 package com.soerjdev.dicodingbfaasubmission.data
 
 import com.google.gson.GsonBuilder
-import com.soerjdev.dicodingbfaasubmission.AUTH_TOKEN
-import com.soerjdev.dicodingbfaasubmission.BASE_URL
+import com.soerjdev.dicodingbfaasubmission.utils.AUTH_TOKEN
+import com.soerjdev.dicodingbfaasubmission.utils.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response

@@ -17,7 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.soerjdev.dicodingbfaasubmission.*
 import com.soerjdev.dicodingbfaasubmission.data.SearchResponse
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentHomeBinding
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.soerjdev.dicodingbfaasubmission.utils.hide
+import com.soerjdev.dicodingbfaasubmission.utils.show
 
 class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdapter.Listener {
 

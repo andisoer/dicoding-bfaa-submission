@@ -1,4 +1,4 @@
-package com.soerjdev.dicodingbfaasubmission
+package com.soerjdev.dicodingbfaasubmission.utils
 
 import android.view.View
 

@@ -31,7 +31,8 @@ class SearchRepository {
 
             val httpClient = httpClient()
             val apiRequest = apiRequest<ApiEndPoints>(httpClient)
-            apiRequest.getSearchUser(queryData.value.toString()).enqueue(object : Callback<UserSearch> {
+
+            apiRequest.getSearchUser(query = queryData.value.toString()).enqueue(object : Callback<UserSearch> {
                 override fun onResponse(call: Call<UserSearch>, response: Response<UserSearch>) {
                     when {
                         response.isSuccessful -> {
@@ -43,9 +44,9 @@ class SearchRepository {
                                     liveData.postValue(Status.error(message = "Empty data", data = null))
                                 }
                             }
-                        }else -> {
-                        liveData.postValue(Status.error(message = "Failed to search user", data = null))
-                    }
+                        } else -> {
+                            liveData.postValue(Status.error(message = "Failed to search user", data = null))
+                        }
                     }
                 }
 
