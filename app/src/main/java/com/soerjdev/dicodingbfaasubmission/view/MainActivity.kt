@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setContentView(binding.root)
@@ -27,9 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        binding.apply {
-
-        }
+        supportActionBar?.hide()
     }
 
     private fun initNavController() {

@@ -12,7 +12,7 @@ import retrofit2.Response
 
 class SearchRepository {
 
-    val liveData = MutableLiveData<Status<UserSearch>>()
+    var liveData = MutableLiveData<Status<UserSearch>>()
     var queryData = MutableLiveData<String>()
 
     fun getUserBySearch(query: String): LiveData<Status<UserSearch>> {
@@ -20,64 +20,70 @@ class SearchRepository {
         Log.d(TAG, "getUserBySearch: query input $query")
         Log.d(TAG, "getUserBySearch: query repository : ${queryData.value}")
 
-        queryData.postValue(query)
+        if (query.isNotBlank()){
+            queryData.value = query
+            Log.d(TAG, "getUserBySearch: before check")
+            Log.d(TAG, "getUserBySearch: ${queryData.value.toString()}")
 
-        Log.d(TAG, "getUserBySearch: before check")
-        if (liveData.value != null){
-            if (liveData.value?.status == Status.Type.SUCCESS) return liveData
+            if (liveData.value != null){
+                if (queryData.value == query && liveData.value?.status == Status.Type.SUCCESS) return liveData
 
-            Log.d(TAG, "getUserBySearch: after check")
+                liveData = MutableLiveData<Status<UserSearch>>()
 
-            val httpClient = httpClient()
-            val apiRequest = apiRequest<ApiEndPoints>(httpClient)
-            apiRequest.getSearchUser(query).enqueue(object : Callback<UserSearch> {
-                override fun onResponse(call: Call<UserSearch>, response: Response<UserSearch>) {
-                    when {
-                        response.isSuccessful -> {
-                            when {
-                                response.body() != null -> {
-                                    liveData.postValue(Status.success(data = response.body()))
+                Log.d(TAG, "getUserBySearch: after check")
+
+                val httpClient = httpClient()
+                val apiRequest = apiRequest<ApiEndPoints>(httpClient)
+                apiRequest.getSearchUser(queryData.value.toString()).enqueue(object : Callback<UserSearch> {
+                    override fun onResponse(call: Call<UserSearch>, response: Response<UserSearch>) {
+                        when {
+                            response.isSuccessful -> {
+                                when {
+                                    response.body() != null -> {
+                                        liveData.postValue(Status.success(data = response.body()))
+                                    }
+                                    else -> {
+                                        liveData.postValue(Status.error(message = "Empty data", data = null))
+                                    }
                                 }
-                                else -> {
-                                    liveData.postValue(Status.error(message = "Empty data", data = null))
-                                }
-                            }
-                        }else -> {
-                        liveData.postValue(Status.error(message = "Failed to search user", data = null))
-                    }
-                    }
-                }
-
-                override fun onFailure(call: Call<UserSearch>, t: Throwable) {
-                    liveData.postValue(Status.error(message = "Error, ${t.message}", data = null))
-                }
-            })
-
-        }else {
-            val httpClient = httpClient()
-            val apiRequest = apiRequest<ApiEndPoints>(httpClient)
-            apiRequest.getSearchUser(query).enqueue(object : Callback<UserSearch> {
-                override fun onResponse(call: Call<UserSearch>, response: Response<UserSearch>) {
-                    when {
-                        response.isSuccessful -> {
-                            when {
-                                response.body() != null -> {
-                                    liveData.postValue(Status.success(data = response.body()))
-                                }
-                                else -> {
-                                    liveData.postValue(Status.error(message = "Empty data", data = null))
-                                }
-                            }
-                        }else -> {
+                            }else -> {
                             liveData.postValue(Status.error(message = "Failed to search user", data = null))
                         }
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<UserSearch>, t: Throwable) {
-                    liveData.postValue(Status.error(message = "Error, ${t.message}", data = null))
-                }
-            })
+                    override fun onFailure(call: Call<UserSearch>, t: Throwable) {
+                        liveData.postValue(Status.error(message = "Error, ${t.message}", data = null))
+                    }
+                })
+
+            }else {
+                liveData = MutableLiveData<Status<UserSearch>>()
+                val httpClient = httpClient()
+                val apiRequest = apiRequest<ApiEndPoints>(httpClient)
+                apiRequest.getSearchUser(queryData.value.toString()).enqueue(object : Callback<UserSearch> {
+                    override fun onResponse(call: Call<UserSearch>, response: Response<UserSearch>) {
+                        when {
+                            response.isSuccessful -> {
+                                when {
+                                    response.body() != null -> {
+                                        liveData.postValue(Status.success(data = response.body()))
+                                    }
+                                    else -> {
+                                        liveData.postValue(Status.error(message = "Empty data", data = null))
+                                    }
+                                }
+                            }else -> {
+                                liveData.postValue(Status.error(message = "Failed to search user", data = null))
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<UserSearch>, t: Throwable) {
+                        liveData.postValue(Status.error(message = "Error, ${t.message}", data = null))
+                    }
+                })
+            }
         }
         return liveData
     }
