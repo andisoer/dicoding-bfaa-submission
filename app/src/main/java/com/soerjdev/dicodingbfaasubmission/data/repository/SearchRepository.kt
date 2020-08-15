@@ -1,11 +1,13 @@
-package com.soerjdev.dicodingbfaasubmission
+package com.soerjdev.dicodingbfaasubmission.data.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.soerjdev.dicodingbfaasubmission.data.api.ApiEndPoints
 import com.soerjdev.dicodingbfaasubmission.data.UserSearch
-import com.soerjdev.dicodingbfaasubmission.data.apiRequest
-import com.soerjdev.dicodingbfaasubmission.data.httpClient
+import com.soerjdev.dicodingbfaasubmission.data.api.apiRequest
+import com.soerjdev.dicodingbfaasubmission.data.api.httpClient
+import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

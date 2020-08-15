@@ -1,4 +1,4 @@
-package com.soerjdev.dicodingbfaasubmission
+package com.soerjdev.dicodingbfaasubmission.data.api
 
 import com.soerjdev.dicodingbfaasubmission.data.UserDetail
 import com.soerjdev.dicodingbfaasubmission.data.UserSearch

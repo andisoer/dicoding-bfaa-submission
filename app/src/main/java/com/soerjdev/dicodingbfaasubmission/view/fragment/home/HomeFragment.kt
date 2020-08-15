@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.soerjdev.dicodingbfaasubmission.*
 import com.soerjdev.dicodingbfaasubmission.data.SearchResponse
+import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentHomeBinding
 import com.soerjdev.dicodingbfaasubmission.utils.hide
 import com.soerjdev.dicodingbfaasubmission.utils.show

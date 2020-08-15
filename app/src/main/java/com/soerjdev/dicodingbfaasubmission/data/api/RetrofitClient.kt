@@ -1,4 +1,4 @@
-package com.soerjdev.dicodingbfaasubmission.data
+package com.soerjdev.dicodingbfaasubmission.data.api
 
 import com.google.gson.GsonBuilder
 import com.soerjdev.dicodingbfaasubmission.utils.AUTH_TOKEN
@@ -21,7 +21,11 @@ fun httpClient(): OkHttpClient {
     builder.readTimeout(10, TimeUnit.SECONDS)
     builder.connectTimeout(10, TimeUnit.SECONDS)
     builder.addInterceptor(logInterceptor)
-    builder.addInterceptor(AuthInterceptor(AUTH_TOKEN))
+    builder.addInterceptor(
+        AuthInterceptor(
+            AUTH_TOKEN
+        )
+    )
 
     return builder.build()
 

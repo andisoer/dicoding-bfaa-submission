@@ -1,4 +1,4 @@
-package com.soerjdev.dicodingbfaasubmission
+package com.soerjdev.dicodingbfaasubmission.data.model
 
 class Status<T>(val status: Type, val data: T?, val message: String?){
 
@@ -8,11 +8,19 @@ class Status<T>(val status: Type, val data: T?, val message: String?){
 
     companion object {
         fun <T> success(data: T?): Status<T> {
-            return Status(Type.SUCCESS, data, null)
+            return Status(
+                Type.SUCCESS,
+                data,
+                null
+            )
         }
 
         fun <T> error(message: String?, data: T?): Status<T> {
-            return Status(Type.FAILED, data, message)
+            return Status(
+                Type.FAILED,
+                data,
+                message
+            )
         }
     }
 

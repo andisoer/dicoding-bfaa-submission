@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailProfileFragment"
-        android:name="com.soerjdev.dicodingbfaasubmission.DetailProfileFragment"
+        android:name="com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile.DetailProfileFragment"
         android:label="fragment_detail_profile"
         tools:layout="@layout/fragment_detail_profile" >
         <action
