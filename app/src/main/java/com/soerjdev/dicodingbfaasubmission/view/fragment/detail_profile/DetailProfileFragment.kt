@@ -13,8 +13,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.soerjdev.dicodingbfaasubmission.DetailProfileFragmentArgs
+import com.google.android.material.tabs.TabLayoutMediator
+import com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile.DetailProfileFragmentArgs
 import com.soerjdev.dicodingbfaasubmission.R
+import com.soerjdev.dicodingbfaasubmission.data.UserDetail
+import com.soerjdev.dicodingbfaasubmission.data.adapter.ProfileViewPagerAdapter
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentDetailProfileBinding
 
@@ -22,6 +25,10 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
     private lateinit var detailProfileFragmentViewModel: DetailProfileFragmentViewModel
     private lateinit var binding: FragmentDetailProfileBinding
+
+    private lateinit var profileViewPagerAdapter : ProfileViewPagerAdapter
+
+    private val tabTitle = arrayOf("Following", "Follower")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,11 +38,21 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         binding = DataBindingUtil.inflate<FragmentDetailProfileBinding>(inflater,
             R.layout.fragment_detail_profile, container, false)
 
+        profileViewPagerAdapter = ProfileViewPagerAdapter(this)
+
         binding.apply {
             tbFragmentDetailProfile.setNavigationOnClickListener {
                 activity?.onBackPressed()
             }
             tbFragmentDetailProfile.setOnMenuItemClickListener(this@DetailProfileFragment)
+
+            viewPagerDetailProfile.adapter = profileViewPagerAdapter
+
+            TabLayoutMediator(tabLayoutDetailProfile, viewPagerDetailProfile,
+                TabLayoutMediator.TabConfigurationStrategy {
+                    tab, position -> tab.text = tabTitle[position]
+            }).attach()
+
         }
 
         return binding.root
@@ -69,7 +86,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                 when(status.status){
                     Status.Type.SUCCESS -> {
                         status.data.apply {
-                            Log.d(TAG, "observeDataDetailProfile: $this")
+                            setData(this!!)
                         }
                     }
                     Status.Type.FAILED -> {
@@ -78,6 +95,16 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                 }
             }
         )
+    }
+
+    private fun setData(userDetail: UserDetail) {
+        binding.apply {
+            tvNameDetailProfile.text = userDetail.name
+            tvUsernameDetailProfile.text = userDetail.login
+            tvLocationDetailProfile.text = userDetail.location
+            tvFollowerCountDetailProfile.text = "${userDetail.followers} Follower"
+            tvFollowingDetailProfile.text = "${userDetail.following} Following"
+        }
     }
 
     companion object {

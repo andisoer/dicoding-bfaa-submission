@@ -38,7 +38,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/tvNameDetailProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -48,13 +48,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/tvUsernameDetailProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="TextView"
-                    app:layout_constraintStart_toStartOf="@+id/textView5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                    app:layout_constraintStart_toStartOf="@+id/tvNameDetailProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNameDetailProfile" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -77,7 +77,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/tvLocationDetailProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -99,7 +99,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/tvFollowerCountDetailProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -114,27 +114,36 @@
                     android:layout_height="4dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_detail_circle"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
-                    app:layout_constraintStart_toEndOf="@+id/textView9"
-                    app:layout_constraintTop_toTopOf="@+id/textView9" />
+                    app:layout_constraintBottom_toBottomOf="@+id/tvFollowerCountDetailProfile"
+                    app:layout_constraintStart_toEndOf="@+id/tvFollowerCountDetailProfile"
+                    app:layout_constraintTop_toTopOf="@+id/tvFollowerCountDetailProfile" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/tvFollowingDetailProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="TextView"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvFollowerCountDetailProfile"
                     app:layout_constraintStart_toEndOf="@+id/view3"
-                    app:layout_constraintTop_toTopOf="@+id/textView9" />
+                    app:layout_constraintTop_toTopOf="@+id/tvFollowerCountDetailProfile" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutDetailProfile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:tabMaxWidth="0dp"
+                app:tabMode="fixed" />
 
         </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerDetailProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

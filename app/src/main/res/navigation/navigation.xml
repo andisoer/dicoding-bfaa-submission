@@ -25,9 +25,6 @@
         android:name="com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile.DetailProfileFragment"
         android:label="fragment_detail_profile"
         tools:layout="@layout/fragment_detail_profile" >
-        <action
-            android:id="@+id/action_detailProfileFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
         <argument
             android:name="username"
             app:argType="string" />
@@ -35,6 +32,9 @@
             android:name="userDetail"
             app:argType="com.soerjdev.dicodingbfaasubmission.data.UserDetail"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_detailProfileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
