@@ -14,10 +14,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
 import com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile.DetailProfileFragmentArgs
 import com.soerjdev.dicodingbfaasubmission.R
 import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
 import com.soerjdev.dicodingbfaasubmission.data.adapter.ProfileViewPagerAdapter
+import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentDetailProfileBinding
 
@@ -29,6 +31,8 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     private lateinit var profileViewPagerAdapter : ProfileViewPagerAdapter
 
     private val tabTitle = arrayOf("Following", "Follower")
+
+    private var favoriteUserModel: FavoriteModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,6 +68,10 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
             viewPagerDetailProfile.adapter = profileViewPagerAdapter
 
+            fabFavoriteDetailProfile.setOnClickListener {
+                addToUsersFavorite()
+            }
+
             TabLayoutMediator(tabLayoutDetailProfile, viewPagerDetailProfile,
                 TabLayoutMediator.TabConfigurationStrategy {
                     tab, position -> tab.text = tabTitle[position]
@@ -74,13 +82,10 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        init()
-    }
-
-    private fun init() {
+    private fun addToUsersFavorite() {
+        if (favoriteUserModel != null){
+            detailProfileFragmentViewModel.insertFavoriteUsers(favoriteUserModel!!)
+        }
     }
 
     private fun observeDataDetailProfile(username: String) {
@@ -108,6 +113,10 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             tvFollowerCountDetailProfile.text = "${userDetail.followers} Follower"
             tvFollowingDetailProfile.text = "${userDetail.following} Following"
         }
+
+        val gson = Gson()
+        val userString = gson.toJson(userDetail)
+        favoriteUserModel = gson.fromJson(userString, FavoriteModel::class.java)
     }
 
     companion object {

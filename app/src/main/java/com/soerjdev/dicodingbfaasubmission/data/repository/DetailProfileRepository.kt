@@ -8,11 +8,13 @@ import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.data.api.ApiEndPoints
 import com.soerjdev.dicodingbfaasubmission.data.api.apiRequest
 import com.soerjdev.dicodingbfaasubmission.data.api.httpClient
+import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteDao
+import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailProfileRepository {
+class DetailProfileRepository(private val favoriteDao: FavoriteDao) {
 
     fun getByUsername(username: String): LiveData<Status<UserDetail>> {
 
@@ -140,4 +142,9 @@ class DetailProfileRepository {
 
         return followingLiveData
     }
+
+    fun insertFavorite(user: FavoriteModel){
+        favoriteDao.insertUser(user)
+    }
+
 }
