@@ -2,8 +2,8 @@ package com.soerjdev.dicodingbfaasubmission.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.soerjdev.dicodingbfaasubmission.data.SearchResponse
-import com.soerjdev.dicodingbfaasubmission.data.UserDetail
+import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
+import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.data.api.ApiEndPoints
 import com.soerjdev.dicodingbfaasubmission.data.api.apiRequest

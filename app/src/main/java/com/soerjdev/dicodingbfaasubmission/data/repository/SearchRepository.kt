@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.soerjdev.dicodingbfaasubmission.data.api.ApiEndPoints
-import com.soerjdev.dicodingbfaasubmission.data.UserSearch
+import com.soerjdev.dicodingbfaasubmission.data.model.UserSearch
 import com.soerjdev.dicodingbfaasubmission.data.api.apiRequest
 import com.soerjdev.dicodingbfaasubmission.data.api.httpClient
 import com.soerjdev.dicodingbfaasubmission.data.model.Status

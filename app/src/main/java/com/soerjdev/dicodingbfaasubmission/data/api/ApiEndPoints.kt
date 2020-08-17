@@ -1,8 +1,8 @@
 package com.soerjdev.dicodingbfaasubmission.data.api
 
-import com.soerjdev.dicodingbfaasubmission.data.SearchResponse
-import com.soerjdev.dicodingbfaasubmission.data.UserDetail
-import com.soerjdev.dicodingbfaasubmission.data.UserSearch
+import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
+import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
+import com.soerjdev.dicodingbfaasubmission.data.model.UserSearch
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -30,7 +30,7 @@
             app:argType="string" />
         <argument
             android:name="userDetail"
-            app:argType="com.soerjdev.dicodingbfaasubmission.data.UserDetail"
+            app:argType="com.soerjdev.dicodingbfaasubmission.data.model.UserDetail"
             app:nullable="true" />
         <action
             android:id="@+id/action_detailProfileFragment_to_settingsFragment"

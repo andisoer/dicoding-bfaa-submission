@@ -1,7 +1,8 @@
-package com.soerjdev.dicodingbfaasubmission.data
+package com.soerjdev.dicodingbfaasubmission.data.model
 
 
 import com.google.gson.annotations.SerializedName
+import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
 
 data class UserSearch(
     @SerializedName("incomplete_results")

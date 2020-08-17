@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.soerjdev.dicodingbfaasubmission.R
-import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
+import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_user.view.*
 
-class UserSearchAdapter (private val context: Context, private val listener: Listener) :
-        RecyclerView.Adapter<UserSearchAdapter.ViewHolder> () {
+class FavoriteUsersAdapter (private val context: Context, private val listener: Listener) :
+        RecyclerView.Adapter<FavoriteUsersAdapter.ViewHolder> (){
 
-    private var listUser = emptyList<SearchResponse>()
+    private var listFavorites = emptyList<FavoriteModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
@@ -24,28 +24,28 @@ class UserSearchAdapter (private val context: Context, private val listener: Lis
             )
         )
 
-    override fun getItemCount(): Int = listUser.size
+    override fun getItemCount(): Int = listFavorites.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(listUser[position])
+        holder.bindItem(listFavorites[position])
         holder.itemView.setOnClickListener {
-            listener.onUserClickListenre(it, listUser[position])
+            listener.onFavoriteClickListener(it, listFavorites[position])
         }
     }
 
-    class ViewHolder (override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
-        fun bindItem(item: SearchResponse) {
+    class ViewHolder (override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
+        fun bindItem(item: FavoriteModel){
             containerView.tvUsernameItemUser.text = item.login
             containerView.tvUserTypeItemUser.text = item.type
         }
     }
 
-    internal fun setUserSearchData(listUser : List<SearchResponse>){
-        this.listUser = listUser
+    internal fun setFavoritesData(listFavorites: List<FavoriteModel>){
+        this.listFavorites = listFavorites
         notifyDataSetChanged()
     }
 
     interface Listener {
-        fun onUserClickListenre(view: View, data: SearchResponse)
+        fun onFavoriteClickListener(view: View, data: FavoriteModel)
     }
 }

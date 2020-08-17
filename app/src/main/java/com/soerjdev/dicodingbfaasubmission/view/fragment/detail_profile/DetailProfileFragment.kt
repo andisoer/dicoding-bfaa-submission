@@ -16,7 +16,7 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.tabs.TabLayoutMediator
 import com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile.DetailProfileFragmentArgs
 import com.soerjdev.dicodingbfaasubmission.R
-import com.soerjdev.dicodingbfaasubmission.data.UserDetail
+import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
 import com.soerjdev.dicodingbfaasubmission.data.adapter.ProfileViewPagerAdapter
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentDetailProfileBinding

@@ -11,12 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.soerjdev.dicodingbfaasubmission.R
-import com.soerjdev.dicodingbfaasubmission.data.SearchResponse
+import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
 import com.soerjdev.dicodingbfaasubmission.data.adapter.UserSearchAdapter
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentFollowerBinding
 import com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile.following.FollowingFragment
-import com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile.following.FollowingFragmentViewModel
 
 class FollowerFragment : Fragment(), UserSearchAdapter.Listener {
 

@@ -12,6 +12,7 @@ buildscript {
         glide_version = "4.11.0"
         retrofit_version = "2.9.0"
         okhttp_version = "4.5.0"
+        room_version = "2.2.5"
         dataBindingCompilerVersion = gradle_version
     }
 
