@@ -147,4 +147,12 @@ class DetailProfileRepository(private val favoriteDao: FavoriteDao) {
         favoriteDao.insertUser(user)
     }
 
+    fun deleteFavorite(user_id: Int){
+        favoriteDao.deleteUser(user_id = user_id)
+    }
+
+    fun getDetailUser(user_id: Int){
+        favoriteDao.selectDetailUser(user_id = user_id)
+    }
+
 }

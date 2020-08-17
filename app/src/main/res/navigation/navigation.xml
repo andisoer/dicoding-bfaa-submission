@@ -14,9 +14,6 @@
             android:id="@+id/action_homeFragment_to_detailProfileFragment"
             app:destination="@id/detailProfileFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
     </fragment>

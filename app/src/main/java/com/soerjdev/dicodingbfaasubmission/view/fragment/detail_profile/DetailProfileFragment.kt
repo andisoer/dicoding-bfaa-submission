@@ -33,6 +33,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     private val tabTitle = arrayOf("Following", "Follower")
 
     private var favoriteUserModel: FavoriteModel? = null
+    private var userDetailModel: UserDetail? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +45,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         detailProfileFragmentViewModel = ViewModelProvider(this).get(DetailProfileFragmentViewModel::class.java)
 
-        arguments?.let {bundle ->
+        arguments?.let { bundle ->
             val username = DetailProfileFragmentArgs.fromBundle(bundle).username
             val data = DetailProfileFragmentArgs.fromBundle(bundle).userDetail
 
@@ -55,10 +56,14 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
             if (data == null){
                 observeDataDetailProfile(username = username)
+            } else {
+                val tempFavoriteModel = Gson().toJson(data)
+                val favoriteModel = Gson().fromJson(tempFavoriteModel, FavoriteModel::class.java)
+                favoriteUserModel = favoriteModel
+                setData(userDetail = data)
+                isUsersFavorite()
             }
         }
-
-        detailProfileFragmentViewModel = ViewModelProvider(this).get(DetailProfileFragmentViewModel::class.java)
 
         binding.apply {
             tbFragmentDetailProfile.setNavigationOnClickListener {
@@ -69,7 +74,14 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             viewPagerDetailProfile.adapter = profileViewPagerAdapter
 
             fabFavoriteDetailProfile.setOnClickListener {
-                addToUsersFavorite()
+                when {
+                    favoriteUserModel != null -> {
+                        removeFromUsersFavorite()
+                    }
+                    else -> {
+                        addToUsersFavorite()
+                    }
+                }
             }
 
             TabLayoutMediator(tabLayoutDetailProfile, viewPagerDetailProfile,
@@ -82,9 +94,41 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         return binding.root
     }
 
+    private fun removeFromUsersFavorite() {
+        when {
+            favoriteUserModel != null -> {
+                detailProfileFragmentViewModel.deleteFavoriteUsers(favoriteUserModel!!.id)
+                favoriteUserModel = null
+                isUsersFavorite()
+            }
+        }
+    }
+
     private fun addToUsersFavorite() {
-        if (favoriteUserModel != null){
-            detailProfileFragmentViewModel.insertFavoriteUsers(favoriteUserModel!!)
+        when {
+            userDetailModel != null -> {
+                val userString = Gson().toJson(userDetailModel)
+                favoriteUserModel = Gson().fromJson(userString, FavoriteModel::class.java)
+                when {
+                    favoriteUserModel != null -> {
+                        detailProfileFragmentViewModel.insertFavoriteUsers(favoriteUserModel!!)
+                        isUsersFavorite()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun isUsersFavorite() {
+        binding.apply {
+            when {
+                favoriteUserModel != null -> {
+                    fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_24)
+                }
+                else -> {
+                    fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                }
+            }
         }
     }
 
@@ -114,9 +158,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             tvFollowingDetailProfile.text = "${userDetail.following} Following"
         }
 
-        val gson = Gson()
-        val userString = gson.toJson(userDetail)
-        favoriteUserModel = gson.fromJson(userString, FavoriteModel::class.java)
+        userDetailModel = userDetail
     }
 
     companion object {

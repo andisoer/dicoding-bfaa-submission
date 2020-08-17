@@ -18,7 +18,15 @@ class DetailProfileFragmentViewModel(application: Application): AndroidViewModel
     fun getDetailProfile(username: String) = detailProfileRepository.getByUsername(username = username)
 
     fun insertFavoriteUsers(user: FavoriteModel) = viewModelScope.launch(Dispatchers.IO){
-        detailProfileRepository.insertFavorite(user)
+        detailProfileRepository.insertFavorite(user = user)
+    }
+
+    fun deleteFavoriteUsers(user_id: Int) = viewModelScope.launch(Dispatchers.IO){
+        detailProfileRepository.deleteFavorite(user_id = user_id)
+    }
+
+    fun selectFavoriteUser(user_id: Int) = viewModelScope.launch(Dispatchers.IO){
+        detailProfileRepository.getDetailUser(user_id = user_id)
     }
 
 }

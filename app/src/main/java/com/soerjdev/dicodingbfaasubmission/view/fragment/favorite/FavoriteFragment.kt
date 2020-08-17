@@ -14,10 +14,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.soerjdev.dicodingbfaasubmission.R
 import com.soerjdev.dicodingbfaasubmission.data.adapter.FavoriteUsersAdapter
 import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
+import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentFavoriteBinding
+import com.soerjdev.dicodingbfaasubmission.view.fragment.home.HomeFragmentDirections
 
 class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
     FavoriteUsersAdapter.Listener {
@@ -64,6 +67,7 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
                     if (it.isNotEmpty()){
                         adapter.setFavoritesData(it)
                     } else {
+                        adapter.notifyDataSetChanged()
                         Log.d(TAG, "onViewCreated: empty")
                     }
                 }
@@ -76,7 +80,10 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
     }
 
     override fun onFavoriteClickListener(view: View, data: FavoriteModel) {
-        Log.d(TAG, "onFavoriteClickListener: $data")
+        val tempUserDetail = Gson().toJson(data)
+        val userDetail = Gson().fromJson(tempUserDetail, UserDetail::class.java)
+        val navigation = FavoriteFragmentDirections.actionFavoriteFragmentToDetailProfileFragment(userDetail.login, userDetail)
+        view.findNavController().navigate(navigation)
     }
 
     companion object {

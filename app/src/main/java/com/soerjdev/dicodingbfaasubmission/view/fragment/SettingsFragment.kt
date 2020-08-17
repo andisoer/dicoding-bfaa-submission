@@ -12,20 +12,20 @@ import com.soerjdev.dicodingbfaasubmission.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var binding: FragmentSettingsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<FragmentSettingsBinding>(inflater,
+        binding = DataBindingUtil.inflate<FragmentSettingsBinding>(inflater,
             R.layout.fragment_settings, container, false)
 
-        binding.tbFragmentSettings.setNavigationOnClickListener {
-            activity?.onBackPressed()
+        binding.apply {
+            tbFragmentSettings.setNavigationOnClickListener {
+                activity?.onBackPressed()
+            }
         }
 
         return binding.root
