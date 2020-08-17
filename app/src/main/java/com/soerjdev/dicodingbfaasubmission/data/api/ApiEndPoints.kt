@@ -1,5 +1,6 @@
 package com.soerjdev.dicodingbfaasubmission.data.api
 
+import com.soerjdev.dicodingbfaasubmission.data.SearchResponse
 import com.soerjdev.dicodingbfaasubmission.data.UserDetail
 import com.soerjdev.dicodingbfaasubmission.data.UserSearch
 import retrofit2.Call
@@ -22,10 +23,10 @@ interface ApiEndPoints {
     @GET("users/{username}/followers")
     fun getUserFollowers(
         @Path("username") username: String
-    ): Call<UserDetail>
+    ): Call<List<SearchResponse>>
 
     @GET("users/{username}/following")
     fun getUserFollowing(
         @Path("username") username: String
-    ): Call<UserDetail>
+    ): Call<List<SearchResponse>>
 }

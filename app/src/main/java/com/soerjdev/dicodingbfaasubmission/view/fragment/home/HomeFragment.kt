@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.soerjdev.dicodingbfaasubmission.*
 import com.soerjdev.dicodingbfaasubmission.data.SearchResponse
+import com.soerjdev.dicodingbfaasubmission.data.adapter.UserSearchAdapter
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentHomeBinding
 import com.soerjdev.dicodingbfaasubmission.utils.hide
@@ -40,8 +41,6 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
             R.layout.fragment_home, container, false)
 
         adapter = UserSearchAdapter(requireContext(), this@HomeFragment)
-
-        if (adapter.itemCount > 0) Log.d(TAG, "onCreateView: not empty")
 
         binding.apply {
             tbFragmentHome.setOnMenuItemClickListener(this@HomeFragment)

@@ -1,4 +1,4 @@
-package com.soerjdev.dicodingbfaasubmission
+package com.soerjdev.dicodingbfaasubmission.view.fragment.favorite
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.soerjdev.dicodingbfaasubmission.R
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener {
@@ -23,7 +24,8 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<FragmentFavoriteBinding>(inflater, R.layout.fragment_favorite, container, false)
+        val binding = DataBindingUtil.inflate<FragmentFavoriteBinding>(inflater,
+            R.layout.fragment_favorite, container, false)
 
         binding.tbFragmentFavorite.setNavigationOnClickListener {
             activity?.onBackPressed()

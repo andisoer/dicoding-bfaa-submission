@@ -38,7 +38,23 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         binding = DataBindingUtil.inflate<FragmentDetailProfileBinding>(inflater,
             R.layout.fragment_detail_profile, container, false)
 
-        profileViewPagerAdapter = ProfileViewPagerAdapter(this)
+        detailProfileFragmentViewModel = ViewModelProvider(this).get(DetailProfileFragmentViewModel::class.java)
+
+        arguments?.let {bundle ->
+            val username = DetailProfileFragmentArgs.fromBundle(bundle).username
+            val data = DetailProfileFragmentArgs.fromBundle(bundle).userDetail
+
+            Log.d(TAG, "onViewCreated: $username")
+            Log.d(TAG, "onViewCreated: $data")
+
+            profileViewPagerAdapter = ProfileViewPagerAdapter(fragment = this, username = username)
+
+            if (data == null){
+                observeDataDetailProfile(username = username)
+            }
+        }
+
+        detailProfileFragmentViewModel = ViewModelProvider(this).get(DetailProfileFragmentViewModel::class.java)
 
         binding.apply {
             tbFragmentDetailProfile.setNavigationOnClickListener {
@@ -61,23 +77,10 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        init()
+//        init()
     }
 
     private fun init() {
-        detailProfileFragmentViewModel = ViewModelProvider(this).get(DetailProfileFragmentViewModel::class.java)
-
-        arguments?.let {bundle ->
-            val username = DetailProfileFragmentArgs.fromBundle(bundle).username
-            val data = DetailProfileFragmentArgs.fromBundle(bundle).userDetail
-
-            Log.d(TAG, "onViewCreated: $username")
-            Log.d(TAG, "onViewCreated: $data")
-
-            if (data == null){
-                observeDataDetailProfile(username = username)
-            }
-        }
     }
 
     private fun observeDataDetailProfile(username: String) {

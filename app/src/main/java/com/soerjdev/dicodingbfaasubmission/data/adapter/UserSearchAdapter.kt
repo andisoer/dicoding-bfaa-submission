@@ -1,12 +1,12 @@
-package com.soerjdev.dicodingbfaasubmission
+package com.soerjdev.dicodingbfaasubmission.data.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.soerjdev.dicodingbfaasubmission.R
 import com.soerjdev.dicodingbfaasubmission.data.SearchResponse
-import com.soerjdev.dicodingbfaasubmission.data.UserSearch
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_user.view.*
 
@@ -15,13 +15,14 @@ class UserSearchAdapter (private val context: Context, private val listener: Lis
 
     private var listUser = emptyList<SearchResponse>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder (
-        LayoutInflater.from(context).inflate(
-            R.layout.item_user,
-            parent,
-            false
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.item_user,
+                parent,
+                false
+            )
         )
-    )
 
     override fun getItemCount(): Int = listUser.size
 

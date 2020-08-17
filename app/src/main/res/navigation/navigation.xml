@@ -43,7 +43,7 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.soerjdev.dicodingbfaasubmission.FavoriteFragment"
+        android:name="com.soerjdev.dicodingbfaasubmission.view.fragment.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" >
         <action
