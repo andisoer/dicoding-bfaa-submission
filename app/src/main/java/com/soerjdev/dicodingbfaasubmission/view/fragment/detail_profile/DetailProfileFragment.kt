@@ -111,7 +111,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                 favoriteUserModel = Gson().fromJson(userString, FavoriteModel::class.java)
                 when {
                     favoriteUserModel != null -> {
-                        detailProfileFragmentViewModel.insertFavoriteUsers(favoriteUserModel!!)
+                        detailProfileFragmentViewModel.insertFavoriteUsers(user = favoriteUserModel!!, context = requireContext())
                         isUsersFavorite()
                     }
                 }

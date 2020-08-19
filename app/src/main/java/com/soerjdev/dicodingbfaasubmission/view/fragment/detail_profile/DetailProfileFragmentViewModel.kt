@@ -1,6 +1,7 @@
 package com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.soerjdev.dicodingbfaasubmission.data.database.AppLocalDatabase
@@ -17,8 +18,8 @@ class DetailProfileFragmentViewModel(application: Application): AndroidViewModel
 
     fun getDetailProfile(username: String) = detailProfileRepository.getByUsername(username = username)
 
-    fun insertFavoriteUsers(user: FavoriteModel) = viewModelScope.launch(Dispatchers.IO){
-        detailProfileRepository.insertFavorite(user = user)
+    fun insertFavoriteUsers(user: FavoriteModel, context: Context) = viewModelScope.launch(Dispatchers.IO){
+        detailProfileRepository.insertFavorite(user = user, context = context)
     }
 
     fun deleteFavoriteUsers(user_id: Int) = viewModelScope.launch(Dispatchers.IO){

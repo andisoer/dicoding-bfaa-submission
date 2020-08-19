@@ -16,7 +16,7 @@ interface FavoriteDao {
     fun selectAllUser(): LiveData<List<FavoriteModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(favoriteModel: FavoriteModel)
+    fun insertUser(favoriteModel: FavoriteModel): Long
 
     @Query("DELETE FROM favorites_table WHERE id = :user_id")
     fun deleteUser(user_id: Int): Int
