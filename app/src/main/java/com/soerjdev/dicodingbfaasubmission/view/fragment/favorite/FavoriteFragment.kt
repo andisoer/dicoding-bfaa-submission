@@ -61,7 +61,7 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
         super.onViewCreated(view, savedInstanceState)
 
         favoriteViewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
-        favoriteViewModel.favoriteUsersList.observe(
+        favoriteViewModel.favoriteUsersList(context = requireContext()).observe(
             viewLifecycleOwner, Observer { favoriteUsers ->
                 favoriteUsers.let {
                     if (it.isNotEmpty()){

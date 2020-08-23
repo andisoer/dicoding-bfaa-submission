@@ -22,8 +22,8 @@ class DetailProfileFragmentViewModel(application: Application): AndroidViewModel
         detailProfileRepository.insertFavorite(user = user, context = context)
     }
 
-    fun deleteFavoriteUsers(user_id: Int) = viewModelScope.launch(Dispatchers.IO){
-        detailProfileRepository.deleteFavorite(user_id = user_id)
+    fun deleteFavoriteUsers(user_id: Int, context: Context) = viewModelScope.launch(Dispatchers.IO){
+        detailProfileRepository.deleteFavorite(user_id = user_id, context = context)
     }
 
     fun selectFavoriteUser(user_id: Int) = viewModelScope.launch(Dispatchers.IO){

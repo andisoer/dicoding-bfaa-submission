@@ -97,7 +97,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     private fun removeFromUsersFavorite() {
         when {
             favoriteUserModel != null -> {
-                detailProfileFragmentViewModel.deleteFavoriteUsers(favoriteUserModel!!.id)
+                detailProfileFragmentViewModel.deleteFavoriteUsers(user_id = favoriteUserModel!!.id, context = requireContext())
                 favoriteUserModel = null
                 isUsersFavorite()
             }

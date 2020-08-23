@@ -1,7 +1,9 @@
 package com.soerjdev.dicodingbfaasubmission.utils
 
 import android.content.ContentValues
+import android.database.Cursor
 import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
+import java.util.ArrayList
 
 fun ContentValues.toFavoriteModel(): FavoriteModel =
     FavoriteModel(
@@ -74,3 +76,53 @@ fun FavoriteModel.toContentValues(): ContentValues =
         put(COLUMN_updated_at, updatedAt)
         put(COLUMN_url, url)
     }
+
+fun Cursor.toListFavoriteModel(): ArrayList<FavoriteModel> {
+    val listFavorite = ArrayList<FavoriteModel>()
+
+    apply {
+        while (moveToNext()){
+            listFavorite.add(
+                this.toFavoriteModel()
+            )
+        }
+    }
+
+    return listFavorite
+}
+
+private fun Cursor.toFavoriteModel(): FavoriteModel =
+    FavoriteModel(
+        getString(getColumnIndexOrThrow(COLUMN_avatar_url)),
+        getString(getColumnIndexOrThrow(COLUMN_bio)),
+        getString(getColumnIndexOrThrow(COLUMN_blog)),
+        getString(getColumnIndexOrThrow(COLUMN_company)),
+        getString(getColumnIndexOrThrow(COLUMN_created_at)),
+        getString(getColumnIndexOrThrow(COLUMN_email)),
+        getString(getColumnIndexOrThrow(COLUMN_events_url)),
+        getInt(getColumnIndexOrThrow(COLUMN_followers)),
+        getString(getColumnIndexOrThrow(COLUMN_followers_url)),
+        getInt(getColumnIndexOrThrow(COLUMN_following)),
+        getString(getColumnIndexOrThrow(COLUMN_following_url)),
+        getString(getColumnIndexOrThrow(COLUMN_gists_url)),
+        getString(getColumnIndexOrThrow(COLUMN_gravatar_id)),
+        getString(getColumnIndexOrThrow(COLUMN_hireable)),
+        getString(getColumnIndexOrThrow(COLUMN_html_url)),
+        getInt(getColumnIndexOrThrow(COLUMN_id)),
+        getString(getColumnIndexOrThrow(COLUMN_location)),
+        getString(getColumnIndexOrThrow(COLUMN_login)),
+        getString(getColumnIndexOrThrow(COLUMN_name)),
+        getString(getColumnIndexOrThrow(COLUMN_node_id)),
+        getString(getColumnIndexOrThrow(COLUMN_organizations_url)),
+        getInt(getColumnIndexOrThrow(COLUMN_public_gists)),
+        getInt(getColumnIndexOrThrow(COLUMN_public_repos)),
+        getString(getColumnIndexOrThrow(COLUMN_received_events_url)),
+        getString(getColumnIndexOrThrow(COLUMN_repos_url)),
+        (getInt(getColumnIndexOrThrow(COLUMN_site_admin)) > 0),
+        getString(getColumnIndexOrThrow(COLUMN_starred_url)),
+        getString(getColumnIndexOrThrow(COLUMN_subscriptions_url)),
+        getString(getColumnIndexOrThrow(COLUMN_twitter_username)),
+        getString(getColumnIndexOrThrow(COLUMN_type)),
+        getString(getColumnIndexOrThrow(COLUMN_updated_at)),
+        getString(getColumnIndexOrThrow(COLUMN_url))
+    )

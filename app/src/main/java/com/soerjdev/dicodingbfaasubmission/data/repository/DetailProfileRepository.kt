@@ -151,8 +151,12 @@ class DetailProfileRepository(private val favoriteDao: FavoriteDao) {
         context.contentResolver.insert(FAVORITE_URI.toUri(), user.toContentValues())
     }
 
-    fun deleteFavorite(user_id: Int){
-        favoriteDao.deleteUser(user_id = user_id)
+    fun deleteFavorite(user_id: Int, context: Context){
+
+        val uri = "$FAVORITE_URI/$user_id".toUri()
+
+        context.contentResolver.delete(uri, null, null)
+//        favoriteDao.deleteUser(user_id = user_id)
     }
 
     fun getDetailUser(user_id: Int){

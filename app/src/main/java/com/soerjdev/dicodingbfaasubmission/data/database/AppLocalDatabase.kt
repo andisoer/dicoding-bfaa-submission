@@ -31,6 +31,7 @@ import androidx.room.RoomDatabase
                     "app_database"
                 )
                     .fallbackToDestructiveMigration()
+                    .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
                 return instance
