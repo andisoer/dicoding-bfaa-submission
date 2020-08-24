@@ -8,7 +8,7 @@ import com.soerjdev.dicodingbfaasubmission.data.database.AppLocalDatabase
 import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
 import com.soerjdev.dicodingbfaasubmission.data.repository.FavoriteRepository
 
-class FavoriteViewModel(application: Application): AndroidViewModel(application) {
+class FavoriteFragmentViewModel(application: Application): AndroidViewModel(application) {
 
     private val favoriteDao = AppLocalDatabase.getDatabase(application).favoriteDao()
 

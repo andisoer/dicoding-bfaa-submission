@@ -22,14 +22,13 @@ import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentFavoriteBinding
 import com.soerjdev.dicodingbfaasubmission.utils.hide
 import com.soerjdev.dicodingbfaasubmission.utils.show
-import com.soerjdev.dicodingbfaasubmission.view.fragment.home.HomeFragmentDirections
 
 class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
     FavoriteUsersAdapter.Listener {
 
     private lateinit var binding: FragmentFavoriteBinding
 
-    private lateinit var favoriteViewModel: FavoriteViewModel
+    private lateinit var favoriteViewModel: FavoriteFragmentViewModel
 
     private lateinit var adapter: FavoriteUsersAdapter
 
@@ -64,7 +63,7 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        favoriteViewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
+        favoriteViewModel = ViewModelProvider(this).get(FavoriteFragmentViewModel::class.java)
         observeFavoriteUsersList()
     }
 

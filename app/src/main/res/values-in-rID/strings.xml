@@ -18,6 +18,6 @@
     <string name="explore_github_users">Jelajahi Pengguna Github</string>
     <string name="slash">-</string>
     <string name="hello_blank_fragment">Hello Fragment Kosong</string>
-    <string name="c_follower">%1$d Pengikut</string>
-    <string name="c_following">%1$d Mengikuti</string>
+    <string name="c_follower">%1$s Pengikut</string>
+    <string name="c_following">%1$s Mengikuti</string>
 </resources>
