@@ -2,4 +2,22 @@
     <string name="app_name">Consumer App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="slash">-</string>
+    <string name="search">Search</string>
+    <string name="search_users">Search Users</string>
+    <string name="settings">Settings</string>
+    <string name="change_language">Change Language</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="user_follower_and_following_count">User Follower and Following Count</string>
+    <string name="location">Location</string>
+    <string name="user_image_profile">User Image Profile</string>
+    <string name="users_favorite">Users Favorite</string>
+    <string name="let_s_start_exploring_github_users">Let\'s start exploring Github Users !</string>
+    <string name="no_data_found">No data found !</string>
+    <string name="something_wrong_please_try_again">Something wrong, please try again</string>
+    <string name="something_wrong">Something Wrong</string>
+    <string name="empty_data">Empty Data</string>
+    <string name="explore_github_users">Explore Github Users</string>
+    <string name="c_follower">%1$d Follower</string>
+    <string name="c_following">%1$d Following</string>
 </resources>

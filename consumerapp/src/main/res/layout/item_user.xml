@@ -20,6 +20,7 @@
             android:layout_height="0dp"
             android:background="@android:color/white"
             android:src="@drawable/github_mark_32"
+            android:contentDescription="@string/user_image_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,7 +31,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="TextView"
+            android:text="@string/slash"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivItemUser"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +42,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="@string/slash"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:layout_constraintStart_toStartOf="@+id/tvUsernameItemUser"
             app:layout_constraintTop_toBottomOf="@+id/tvUsernameItemUser" />
 

@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.soerjdev.dicodingbfaasubmission.R
-import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
+import com.soerjdev.consumerapp.R
+import com.soerjdev.consumerapp.model.SearchResponse
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserSearchAdapter (private val context: Context, private val listener: Listener) :
         RecyclerView.Adapter<UserSearchAdapter.ViewHolder> () {
 
-    private var listUser = emptyList<SearchResponse>()
+    private var listUser = emptyList<FavoriteModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
@@ -34,18 +34,18 @@ class UserSearchAdapter (private val context: Context, private val listener: Lis
     }
 
     class ViewHolder (override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
-        fun bindItem(item: SearchResponse) {
+        fun bindItem(item: FavoriteModel) {
             containerView.tvUsernameItemUser.text = item.login
-            containerView.tvUserTypeItemUser.text = item.type
+            containerView.tvUserTypeItemUser.text = item.name
         }
     }
 
-    internal fun setUserSearchData(listUser : List<SearchResponse>){
+    internal fun setUserSearchData(listUser : List<FavoriteModel>){
         this.listUser = listUser
         notifyDataSetChanged()
     }
 
     interface Listener {
-        fun onUserClickListenre(view: View, data: SearchResponse)
+        fun onUserClickListenre(view: View, data: FavoriteModel)
     }
 }
