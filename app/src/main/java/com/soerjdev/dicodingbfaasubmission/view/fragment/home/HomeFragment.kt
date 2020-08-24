@@ -70,6 +70,9 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
             if (!edtSearchHome.text.isBlank()){
 //                pbLoadHome.show()
                 rvUserListHome.hide()
+                layoutBeginSearchHome.hide()
+                layoutEmptyDataHome.hide()
+                layoutFailed.hide()
                 pbLoadHome.show()
                 observeDataUserSearch(edtSearchHome.text.toString())
                 Log.d(TAG, "searchUser()")
@@ -84,20 +87,32 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
             viewLifecycleOwner, Observer {  status ->
                 when (status.status) {
                     Status.Type.SUCCESS -> {
-                        binding.pbLoadHome.hide()
+                        binding.apply {
+                            layoutBeginSearchHome.hide()
+                            pbLoadHome.hide()
+                        }
                         status.data?.apply {
                             if (this.totalCount > 0) {
                                 adapter.setUserSearchData(this.items)
-                                binding.rvUserListHome.show()
+                                binding.apply {
+                                    layoutBeginSearchHome.hide()
+                                    rvUserListHome.show()
+                                }
                             }else {
-                                Log.d(TAG, "observeDataUserSearch: empty")
+                                binding.apply {
+                                    layoutEmptyDataHome.show()
+                                }
                             }
                         }
 //                        binding.pbLoadHome.hide()
                         Log.d(TAG, "observeDataUserSearch: pb showing ${binding.pbLoadHome.isShown}")
                     }
                     Status.Type.FAILED -> {
-                        binding.pbLoadHome.hide()
+                        binding.apply {
+                            layoutBeginSearchHome.hide()
+                            pbLoadHome.hide()
+                            layoutFailed.show()
+                        }
                         Log.d(TAG, "observeDataUserSearch: ${status.message}")
 //                        binding.pbLoadHome.hide()
                         Log.d(TAG, "observeDataUserSearch: pb showing ${binding.pbLoadHome.isShown}")
