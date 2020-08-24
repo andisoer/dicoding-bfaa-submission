@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp.model
+package com.soerjdev.consumerapp.data.model
 
 class Status<T>(val status: Type, val data: T?, val message: String?){
 

@@ -1,8 +1,7 @@
-package com.soerjdev.consumerapp.model
+package com.soerjdev.consumerapp.data.model
 
 
 import com.google.gson.annotations.SerializedName
-import com.soerjdev.consumerapp.model.SearchResponse
 
 data class UserSearch(
     @SerializedName("incomplete_results")

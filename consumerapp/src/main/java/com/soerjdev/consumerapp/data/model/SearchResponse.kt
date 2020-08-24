@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp.model
+package com.soerjdev.consumerapp.data.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

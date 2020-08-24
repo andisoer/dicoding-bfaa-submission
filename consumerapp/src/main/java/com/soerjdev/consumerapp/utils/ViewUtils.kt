@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp
+package com.soerjdev.consumerapp.utils
 
 import android.view.View
 

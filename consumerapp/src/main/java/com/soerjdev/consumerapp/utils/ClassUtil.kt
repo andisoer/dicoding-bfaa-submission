@@ -1,7 +1,8 @@
-package com.soerjdev.consumerapp
+package com.soerjdev.consumerapp.utils
 
 import android.content.ContentValues
 import android.database.Cursor
+import com.soerjdev.consumerapp.data.model.FavoriteModel
 import java.util.ArrayList
 
 fun ContentValues.toFavoriteModel(): FavoriteModel =
@@ -11,7 +12,7 @@ fun ContentValues.toFavoriteModel(): FavoriteModel =
         blog = getAsString(COLUMN_blog),
         company = getAsString(COLUMN_company),
         createdAt = getAsString(COLUMN_created_at),
-        email =  getAsString(COLUMN_email),
+        email = getAsString(COLUMN_email),
         eventsUrl = getAsString(COLUMN_events_url),
         followers = getAsInteger(COLUMN_followers),
         followersUrl = getAsString(COLUMN_followers_url),
@@ -28,14 +29,14 @@ fun ContentValues.toFavoriteModel(): FavoriteModel =
         nodeId = getAsString(COLUMN_node_id),
         organizationsUrl = getAsString(COLUMN_organizations_url),
         publicGists = getAsInteger(COLUMN_public_gists),
-        publicRepos = getAsInteger(COLUMN_public_repos) ,
+        publicRepos = getAsInteger(COLUMN_public_repos),
         receivedEventsUrl = getAsString(COLUMN_received_events_url),
         reposUrl = getAsString(COLUMN_repos_url),
         siteAdmin = getAsBoolean(COLUMN_site_admin),
         starredUrl = getAsString(COLUMN_starred_url),
         subscriptionsUrl = getAsString(COLUMN_subscriptions_url),
         twitterUsername = getAsString(COLUMN_twitter_username),
-        type =  getAsString(COLUMN_type),
+        type = getAsString(COLUMN_type),
         updatedAt = getAsString(COLUMN_updated_at),
         url = getAsString(COLUMN_url)
     )

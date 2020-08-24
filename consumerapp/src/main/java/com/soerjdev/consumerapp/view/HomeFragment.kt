@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp
+package com.soerjdev.consumerapp.view
 
 import android.os.Bundle
 import android.util.Log
@@ -11,9 +11,15 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.soerjdev.consumerapp.view.HomeFragmentDirections
+import com.soerjdev.consumerapp.data.model.FavoriteModel
+import com.soerjdev.consumerapp.R
+import com.soerjdev.consumerapp.data.adapter.UserSearchAdapter
 import com.soerjdev.consumerapp.databinding.FragmentHomeBinding
-import com.soerjdev.consumerapp.model.SearchResponse
+import com.soerjdev.consumerapp.utils.hide
+import com.soerjdev.consumerapp.utils.show
 
 class HomeFragment : Fragment(), UserSearchAdapter.Listener, Toolbar.OnMenuItemClickListener {
 
@@ -34,7 +40,10 @@ class HomeFragment : Fragment(), UserSearchAdapter.Listener, Toolbar.OnMenuItemC
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_home, container, false)
 
-        adapter = UserSearchAdapter(requireContext(), this@HomeFragment)
+        adapter = UserSearchAdapter(
+            requireContext(),
+            this@HomeFragment
+        )
 
         binding.apply {
             tbFragmentHome.setOnMenuItemClickListener(this@HomeFragment)
@@ -82,7 +91,8 @@ class HomeFragment : Fragment(), UserSearchAdapter.Listener, Toolbar.OnMenuItemC
     }
 
     override fun onUserClickListenre(view: View, data: FavoriteModel) {
-        Log.d(TAG, "onUserClickListenre: $data")
+        val navigation = HomeFragmentDirections.actionHomeFragmentToDetailProfileFragment(data.login, data)
+        view.findNavController().navigate(navigation)
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {

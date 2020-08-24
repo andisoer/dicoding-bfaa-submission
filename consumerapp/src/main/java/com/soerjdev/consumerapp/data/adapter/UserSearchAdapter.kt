@@ -1,12 +1,12 @@
-package com.soerjdev.consumerapp
+package com.soerjdev.consumerapp.data.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.soerjdev.consumerapp.data.model.FavoriteModel
 import com.soerjdev.consumerapp.R
-import com.soerjdev.consumerapp.model.SearchResponse
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_user.view.*
 

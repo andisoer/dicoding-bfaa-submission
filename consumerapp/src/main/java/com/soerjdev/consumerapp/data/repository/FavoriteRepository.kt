@@ -1,9 +1,12 @@
-package com.soerjdev.consumerapp
+package com.soerjdev.consumerapp.data.repository
 
 import android.content.Context
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.soerjdev.consumerapp.data.model.FavoriteModel
+import com.soerjdev.consumerapp.utils.FAVORITE_URI
+import com.soerjdev.consumerapp.utils.toListFavoriteModel
 
 class FavoriteRepository() {
 
