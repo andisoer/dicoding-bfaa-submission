@@ -20,10 +20,14 @@ import com.soerjdev.dicodingbfaasubmission.data.adapter.FavoriteUsersAdapter
 import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
 import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentFavoriteBinding
+import com.soerjdev.dicodingbfaasubmission.utils.hide
+import com.soerjdev.dicodingbfaasubmission.utils.show
 import com.soerjdev.dicodingbfaasubmission.view.fragment.home.HomeFragmentDirections
 
 class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
     FavoriteUsersAdapter.Listener {
+
+    private lateinit var binding: FragmentFavoriteBinding
 
     private lateinit var favoriteViewModel: FavoriteViewModel
 
@@ -34,7 +38,7 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<FragmentFavoriteBinding>(inflater,
+        binding = DataBindingUtil.inflate<FragmentFavoriteBinding>(inflater,
             R.layout.fragment_favorite, container, false)
 
         adapter = FavoriteUsersAdapter(requireContext(), this)
@@ -61,17 +65,27 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
         super.onViewCreated(view, savedInstanceState)
 
         favoriteViewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
-        favoriteViewModel.favoriteUsersList(context = requireContext()).observe(
-            viewLifecycleOwner, Observer { favoriteUsers ->
-                favoriteUsers.let {
-                    if (it.isNotEmpty()){
-                        adapter.setFavoritesData(it)
-                    } else {
-                        adapter.notifyDataSetChanged()
-                        Log.d(TAG, "onViewCreated: empty")
+        observeFavoriteUsersList()
+    }
+
+    private fun observeFavoriteUsersList() {
+        binding.apply {
+            favoriteViewModel.favoriteUsersList(context = requireContext()).observe(
+                viewLifecycleOwner, Observer { favoriteUsers ->
+                    favoriteUsers.let {
+                        binding.apply {
+                            pbLoadFavorite.hide()
+                            if (it.isNotEmpty()){
+                                adapter.setFavoritesData(it)
+                            } else {
+                                adapter.notifyDataSetChanged()
+                                layoutEmptyDataFavorite.show()
+                                Log.d(TAG, "onViewCreated: empty")
+                            }
+                        }
                     }
-                }
-            })
+                })
+        }
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
