@@ -15,6 +15,8 @@ import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
 import com.soerjdev.dicodingbfaasubmission.data.adapter.UserSearchAdapter
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentFollowingBinding
+import com.soerjdev.dicodingbfaasubmission.utils.hide
+import com.soerjdev.dicodingbfaasubmission.utils.show
 
 class FollowingFragment: Fragment(), UserSearchAdapter.Listener {
 
@@ -45,16 +47,34 @@ class FollowingFragment: Fragment(), UserSearchAdapter.Listener {
     }
 
     private fun observerDataUserFollowing(username: String) {
+        binding.apply {
+            pbLoadFollowing.show()
+            layoutEmptyDataFollowing.hide()
+            layoutFailedFollowing.hide()
+        }
         followingFragmentViewModel.getFollowingUser(username = username).observe(
             viewLifecycleOwner, Observer { status ->
                 when(status.status){
                     Status.Type.SUCCESS -> {
                         status.data.apply {
-                            adapter.setUserSearchData(this!!)
+                            if (this != null){
+                                binding.apply {
+                                    pbLoadFollowing.hide()
+                                }
+                                adapter.setUserSearchData(this)
+                            }else {
+                                binding.apply {
+                                    pbLoadFollowing.hide()
+                                    layoutEmptyDataFollowing.show()
+                                }
+                            }
                         }
                     }
                     Status.Type.FAILED -> {
-                        Log.d(TAG, "observerDataUserFollowing: failed")
+                        binding.apply {
+                            pbLoadFollowing.hide()
+                            layoutFailedFollowing.show()
+                        }
                     }
                 }
             }

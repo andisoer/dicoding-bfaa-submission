@@ -22,8 +22,10 @@
                 style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerDetailProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:background="@android:color/white">
 
                 <ImageView
@@ -134,6 +136,7 @@
                 android:id="@+id/tabLayoutDetailProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:tabMaxWidth="0dp"
                 app:tabMode="fixed" />
 
@@ -143,6 +146,7 @@
             android:id="@+id/viewPagerDetailProfile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -150,9 +154,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
+            android:visibility="invisible"
             app:backgroundTint="@color/colorAccent"
             android:src="@drawable/ic_baseline_favorite_border_24"
             android:layout_margin="16dp"/>
+
+        <ProgressBar
+            android:id="@+id/pbLoadDetailProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

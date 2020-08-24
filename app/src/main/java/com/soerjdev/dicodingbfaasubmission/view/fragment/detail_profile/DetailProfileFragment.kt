@@ -22,6 +22,8 @@ import com.soerjdev.dicodingbfaasubmission.data.adapter.ProfileViewPagerAdapter
 import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentDetailProfileBinding
+import com.soerjdev.dicodingbfaasubmission.utils.hide
+import com.soerjdev.dicodingbfaasubmission.utils.show
 
 class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
@@ -61,6 +63,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                 val favoriteModel = Gson().fromJson(tempFavoriteModel, FavoriteModel::class.java)
                 favoriteUserModel = favoriteModel
                 setData(userDetail = data)
+                showDetailContainer()
                 isUsersFavorite()
             }
         }
@@ -139,6 +142,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                     Status.Type.SUCCESS -> {
                         status.data.apply {
                             setData(this!!)
+                            showDetailContainer()
                         }
                     }
                     Status.Type.FAILED -> {
@@ -147,6 +151,16 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                 }
             }
         )
+    }
+
+    private fun showDetailContainer() {
+        binding.apply {
+            containerDetailProfile.show()
+            fabFavoriteDetailProfile.show()
+            viewPagerDetailProfile.show()
+            tabLayoutDetailProfile.show()
+            pbLoadDetailProfile.hide()
+        }
     }
 
     private fun setData(userDetail: UserDetail) {

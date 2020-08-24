@@ -19,6 +19,20 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"/>
 
+        <include
+            android:id="@+id/layoutEmptyDataFollower"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/layout_empty_data"
+            android:visibility="gone"/>
+
+        <include
+            android:id="@+id/layoutFailedFollower"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/layout_warning"
+            android:visibility="gone"/>
+
     </RelativeLayout>
 
 </layout>
