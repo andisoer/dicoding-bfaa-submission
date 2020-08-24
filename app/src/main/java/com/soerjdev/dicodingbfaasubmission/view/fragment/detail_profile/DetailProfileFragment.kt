@@ -42,7 +42,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentDetailProfileBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_detail_profile, container, false)
 
         detailProfileFragmentViewModel = ViewModelProvider(this).get(DetailProfileFragmentViewModel::class.java)
@@ -168,8 +168,9 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             tvNameDetailProfile.text = userDetail.name
             tvUsernameDetailProfile.text = userDetail.login
             tvLocationDetailProfile.text = userDetail.location
-            tvFollowerCountDetailProfile.text = "${userDetail.followers} Follower"
-            tvFollowingDetailProfile.text = "${userDetail.following} Following"
+            tvFollowerCountDetailProfile.text = getString(R.string.c_follower, userDetail.followers)
+            tvFollowingDetailProfile.text = getString(R.string.c_following, userDetail.following)
+            tvBioDetailProfile.text = userDetail.bio
         }
 
         userDetailModel = userDetail

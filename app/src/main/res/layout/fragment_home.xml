@@ -39,7 +39,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="9"
-                        android:hint="Search"
+                        android:hint="@string/search"
+                        android:textColor="@android:color/white"
                         android:background="@null"
                         android:textColorHint="@android:color/white"
                         android:imeOptions="actionSearch"
@@ -52,6 +53,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="8dp"
+                        android:contentDescription="@string/search_users"
                         android:src="@drawable/ic_baseline_search_24"/>
 
                 </LinearLayout>

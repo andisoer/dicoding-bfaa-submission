@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Github Users</string>
+    <string name="search">Cari</string>
+    <string name="search_users">Cari Pengguna</string>
+    <string name="settings">Pengaturan</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="daily_reminder">Pengingat Harian</string>
+    <string name="user_follower_and_following_count">Jumlah pengikut dan mengikuti pengguna</string>
+    <string name="location">Lokasi</string>
+    <string name="user_image_profile">Gambar Profile Pengguna</string>
+    <string name="users_favorite">Favorit Pengguna</string>
+    <string name="let_s_start_exploring_github_users">Ayo mulai menjelajahi Pengguna Github</string>
+    <string name="no_data_found">Data tidak ditemukan !</string>
+    <string name="something_wrong_please_try_again">Terjadi kesalahan, silahkan coba lagi</string>
+    <string name="something_wrong">Terjadi kesalahan</string>
+    <string name="empty_data">Data kosong</string>
+    <string name="explore_github_users">Jelajahi Pengguna Github</string>
+    <string name="slash">-</string>
+    <string name="hello_blank_fragment">Hello Fragment Kosong</string>
+    <string name="c_follower">%1$d Pengikut</string>
+    <string name="c_following">%1$d Mengikuti</string>
+</resources>

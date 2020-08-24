@@ -1,6 +1,8 @@
-package com.soerjdev.dicodingbfaasubmission.view.fragment
+package com.soerjdev.dicodingbfaasubmission.view.fragment.setting
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +38,9 @@ class SettingsFragment : Fragment() {
                 setAlarm(isChecked)
             }
             switchAlarmSettings.isChecked = sharedPrefHelper.getAlarmState()
+            containerChangeLanguageSetting.setOnClickListener {
+                startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+            }
         }
 
         return binding.root
@@ -49,7 +54,7 @@ class SettingsFragment : Fragment() {
                 message = "Test Message",
                 requestCode = 0,
                 time = Calendar.getInstance().apply {
-                    set(Calendar.HOUR_OF_DAY, 11)
+                    set(Calendar.HOUR_OF_DAY, 9)
                     set(Calendar.MINUTE, 0)
                     set(Calendar.SECOND, 0)
                 }

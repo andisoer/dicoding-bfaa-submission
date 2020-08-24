@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.soerjdev.dicodingbfaasubmission.view.fragment.SettingsFragment"
+        android:name="com.soerjdev.dicodingbfaasubmission.view.fragment.setting.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment

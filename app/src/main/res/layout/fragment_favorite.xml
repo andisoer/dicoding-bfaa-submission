@@ -16,7 +16,7 @@
                 android:id="@+id/tbFragmentFavorite"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="Favorite Users"
+                app:title="@string/users_favorite"
                 app:titleTextColor="@android:color/white"
                 app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
 

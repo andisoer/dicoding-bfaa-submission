@@ -9,12 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_centerInParent="true"
+        android:contentDescription="@string/explore_github_users"
         android:src="@drawable/ic_undraw_people_search_wctu"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Let's start exploring Github Users !"
+        android:text="@string/let_s_start_exploring_github_users"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_below="@id/ivBeginSearch"
         android:layout_centerHorizontal="true"/>
