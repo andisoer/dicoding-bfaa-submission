@@ -3,6 +3,10 @@
     package="com.soerjdev.dicodingbfaasubmission">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <permission android:name="com.soerjdev.dicodingbfaasubmission.READ_DATABASE"
+        android:protectionLevel="normal"/>
+    <permission android:name="com.soerjdev.dicodingbfaasubmission.WRITE_DATABASE"
+        android:protectionLevel="normal"/>
 
     <application
         android:allowBackup="true"
