@@ -71,7 +71,7 @@ class FollowerFragment : Fragment(), UserSearchAdapter.Listener {
                 when(status.status){
                     Status.Type.SUCCESS -> {
                         status.data.apply {
-                            if (this != null){
+                            if (this!!.isNotEmpty()){
                                 binding.pbLoadFollower.hide()
                                 adapter.setUserSearchData(this)
                             }else {
