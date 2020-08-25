@@ -22,39 +22,36 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <RelativeLayout
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/colorGreyLight"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-            <androidx.core.widget.NestedScrollView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUserListHome"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                tools:listitem="@layout/item_user"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvUserListHome"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                    tools:listitem="@layout/item_user"/>
+        </androidx.core.widget.NestedScrollView>
 
-            </androidx.core.widget.NestedScrollView>
+        <ProgressBar
+            android:id="@+id/pbLoadHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"/>
 
-            <ProgressBar
-                android:id="@+id/pbLoadHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"/>
-
-            <include
-                android:id="@+id/layoutEmptyDataHome"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                layout="@layout/layout_empty_data"
-                android:visibility="gone"/>
-
-        </RelativeLayout>
+        <include
+            android:id="@+id/layoutEmptyDataHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            layout="@layout/layout_empty_data"
+            android:visibility="gone"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
