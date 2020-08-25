@@ -50,8 +50,8 @@ class SettingsFragment : Fragment() {
         if (isChecked){
             AlarmUtil.enabledAlarm(
                 context = requireContext(),
-                title = "Test Title",
-                message = "Test Message",
+                title = "Github Users App",
+                message = "Let's find popular users on Github !",
                 requestCode = 0,
                 time = Calendar.getInstance().apply {
                     set(Calendar.HOUR_OF_DAY, 9)
