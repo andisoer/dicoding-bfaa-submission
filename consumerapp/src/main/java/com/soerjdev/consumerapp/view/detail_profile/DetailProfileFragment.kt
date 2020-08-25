@@ -16,7 +16,7 @@ import com.soerjdev.consumerapp.data.model.FavoriteModel
 import com.soerjdev.consumerapp.databinding.FragmentDetailProfileBinding
 import com.soerjdev.consumerapp.utils.hide
 import com.soerjdev.consumerapp.utils.show
-import com.soerjdev.consumerapp.view.DetailProfileFragmentArgs
+import com.soerjdev.consumerapp.view.detail_profile.DetailProfileFragmentArgs
 
 class DetailProfileFragment : Fragment() {
 

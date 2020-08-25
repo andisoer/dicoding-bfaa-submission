@@ -21,7 +21,7 @@ import com.soerjdev.consumerapp.data.adapter.FavoriteUserAdapter
 import com.soerjdev.consumerapp.databinding.FragmentHomeBinding
 import com.soerjdev.consumerapp.utils.hide
 import com.soerjdev.consumerapp.utils.show
-import com.soerjdev.consumerapp.view.HomeFragmentDirections
+import com.soerjdev.consumerapp.view.home.HomeFragmentDirections
 
 class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuItemClickListener {
 
