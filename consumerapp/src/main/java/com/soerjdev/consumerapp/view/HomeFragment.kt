@@ -1,6 +1,8 @@
 package com.soerjdev.consumerapp.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -95,7 +97,12 @@ class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuIte
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        Log.d(TAG, "onMenuItemClick: ")
-        return false
+        return when (item?.itemId){
+            R.id.menuChangeLanguage -> {
+                startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+                true
+            }
+            else -> false
+        }
     }
 }

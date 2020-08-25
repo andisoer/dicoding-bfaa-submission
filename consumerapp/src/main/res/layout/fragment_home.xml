@@ -17,7 +17,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:title="Github User"
-                app:titleTextColor="@android:color/white"/>
+                app:titleTextColor="@android:color/white"
+                app:menu="@menu/menu_change_language"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 
