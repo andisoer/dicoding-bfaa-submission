@@ -14,6 +14,7 @@ import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteDao
 import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
 import com.soerjdev.dicodingbfaasubmission.utils.FAVORITE_URI
 import com.soerjdev.dicodingbfaasubmission.utils.toContentValues
+import com.soerjdev.dicodingbfaasubmission.utils.toFavoriteModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -159,8 +160,23 @@ class DetailProfileRepository(private val favoriteDao: FavoriteDao) {
 //        favoriteDao.deleteUser(user_id = user_id)
     }
 
-    fun getDetailUser(user_id: Int){
-        favoriteDao.selectDetailUser(user_id = user_id)
+    fun getDetailUser(user_id: Int, context: Context): LiveData<Status<FavoriteModel>>{
+        val liveData = MutableLiveData<Status<FavoriteModel>>()
+
+        val uri = "$FAVORITE_URI/$user_id".toUri()
+        val cursor = context.contentResolver.query(uri, null, null, null, null)
+        cursor?.let {
+
+            if (cursor.moveToFirst()){
+                liveData.postValue(Status.success(data = it.toFavoriteModel()))
+            }else {
+                liveData.postValue(Status.error(message = "Not user favorited", data = null))
+            }
+
+            cursor.close()
+        }
+
+        return liveData
     }
 
 }

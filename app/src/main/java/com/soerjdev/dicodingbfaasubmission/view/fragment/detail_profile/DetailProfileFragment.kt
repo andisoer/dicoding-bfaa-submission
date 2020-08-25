@@ -16,7 +16,6 @@ import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
-import com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile.DetailProfileFragmentArgs
 import com.soerjdev.dicodingbfaasubmission.R
 import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
 import com.soerjdev.dicodingbfaasubmission.data.adapter.ProfileViewPagerAdapter
@@ -25,7 +24,6 @@ import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentDetailProfileBinding
 import com.soerjdev.dicodingbfaasubmission.utils.hide
 import com.soerjdev.dicodingbfaasubmission.utils.show
-import kotlinx.android.synthetic.main.item_user.view.*
 
 class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
@@ -38,6 +36,8 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
     private var favoriteUserModel: FavoriteModel? = null
     private var userDetailModel: UserDetail? = null
+
+    private var isFavorite: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,9 +64,9 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                 val tempFavoriteModel = Gson().toJson(data)
                 val favoriteModel = Gson().fromJson(tempFavoriteModel, FavoriteModel::class.java)
                 favoriteUserModel = favoriteModel
+                isFavorite = true
                 setData(userDetail = data)
                 showDetailContainer()
-                isUsersFavorite()
             }
         }
 
@@ -80,7 +80,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
             fabFavoriteDetailProfile.setOnClickListener {
                 when {
-                    favoriteUserModel != null -> {
+                    isFavorite -> {
                         removeFromUsersFavorite()
                     }
                     else -> {
@@ -102,9 +102,11 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     private fun removeFromUsersFavorite() {
         when {
             favoriteUserModel != null -> {
+                Log.d(TAG, "removeFromUsersFavorite: removed")
                 detailProfileFragmentViewModel.deleteFavoriteUsers(user_id = favoriteUserModel!!.id, context = requireContext())
+                binding.fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 favoriteUserModel = null
-                isUsersFavorite()
+                isFavorite = false
             }
         }
     }
@@ -118,25 +120,48 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                 Log.d(TAG, "addToUsersFavorite: $favoriteUserModel")
                 when {
                     favoriteUserModel != null -> {
+                        binding.fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_24)
                         detailProfileFragmentViewModel.insertFavoriteUsers(user = favoriteUserModel!!, context = requireContext())
-                        isUsersFavorite()
+                        isFavorite = true
                     }
                 }
             }
         }
     }
 
-    private fun isUsersFavorite() {
+    private fun observeIsUserFavorite() {
+        Log.d(TAG, "observeIsUserFavorite()")
         binding.apply {
-            when {
-                favoriteUserModel != null -> {
-                    fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_24)
-                }
-                else -> {
-                    fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-                }
+            userDetailModel?.let {
+                detailProfileFragmentViewModel.selectFavoriteUser(user_id = it.id, context = requireContext()).observe(
+                    viewLifecycleOwner, Observer { status ->
+                        Log.d(TAG, "observeIsUserFavorite: ${status.status}")
+                        isFavorite = when(status.status){
+                            Status.Type.SUCCESS -> {
+                                favoriteUserModel = status.data
+                                fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_24)
+                                true
+                            }
+                            Status.Type.FAILED -> {
+                                fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                                false
+                            }
+                        }
+                    }
+                )
             }
         }
+
+//        binding.apply {
+//            when {
+//                favoriteUserModel != null -> {
+//                    fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_24)
+//                }
+//                else -> {
+//                    fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+//                }
+//            }
+//        }
     }
 
     private fun observeDataDetailProfile(username: String) {
@@ -182,6 +207,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         }
 
         userDetailModel = userDetail
+        observeIsUserFavorite()
         Log.d(TAG, "setData: $userDetail")
     }
 

@@ -91,7 +91,7 @@ fun Cursor.toListFavoriteModel(): ArrayList<FavoriteModel> {
     return listFavorite
 }
 
-private fun Cursor.toFavoriteModel(): FavoriteModel =
+fun Cursor.toFavoriteModel(): FavoriteModel =
     FavoriteModel(
         getString(getColumnIndexOrThrow(COLUMN_avatar_url)),
         getString(getColumnIndexOrThrow(COLUMN_bio)),
