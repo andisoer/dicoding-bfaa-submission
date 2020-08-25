@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -20,6 +22,7 @@ import com.soerjdev.dicodingbfaasubmission.data.adapter.UserSearchAdapter
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentHomeBinding
 import com.soerjdev.dicodingbfaasubmission.utils.hide
+import com.soerjdev.dicodingbfaasubmission.utils.hideKeyboard
 import com.soerjdev.dicodingbfaasubmission.utils.show
 
 class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdapter.Listener {
@@ -46,7 +49,18 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
             tbFragmentHome.setOnMenuItemClickListener(this@HomeFragment)
 
             ivSearchHome.setOnClickListener {
+                hideKeyboard()
                 searchUser()
+            }
+
+            edtSearchHome.setOnEditorActionListener { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                    if (!edtSearchHome.text.isBlank()){
+                        observeDataUserSearch(edtSearchHome.text.toString())
+                        true
+                    }
+                }
+                false
             }
 
             rvUserListHome.layoutManager = LinearLayoutManager(context)
