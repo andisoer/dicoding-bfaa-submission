@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp.view.detail_profile
+package com.soerjdev.consumerapp.view.fragment.detail_profile.follower
 
 import android.os.Bundle
 import android.util.Log
@@ -14,14 +14,14 @@ import com.soerjdev.consumerapp.R
 import com.soerjdev.consumerapp.data.adapter.UserSearchAdapter
 import com.soerjdev.consumerapp.data.model.SearchResponse
 import com.soerjdev.consumerapp.data.model.Status
-import com.soerjdev.consumerapp.databinding.FragmentFollowingBinding
+import com.soerjdev.consumerapp.databinding.FragmentFollowerBinding
 import com.soerjdev.consumerapp.utils.hide
 import com.soerjdev.consumerapp.utils.show
 
-class FollowingFragment : Fragment(), UserSearchAdapter.Listener {
+class FollowerFragment : Fragment(), UserSearchAdapter.Listener {
 
-    private lateinit var followingFragmentViewModel: FollowingFragmentViewModel
-    private lateinit var binding: FragmentFollowingBinding
+    private lateinit var followerFragmentViewModel: FollowerFragmentViewModel
+    private lateinit var binding: FragmentFollowerBinding
     private lateinit var adapter: UserSearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,14 +32,14 @@ class FollowingFragment : Fragment(), UserSearchAdapter.Listener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<FragmentFollowingBinding>(inflater,
-            R.layout.fragment_following, container, false)
+        binding = DataBindingUtil.inflate<FragmentFollowerBinding>(inflater,
+            R.layout.fragment_follower, container, false)
 
-        adapter = UserSearchAdapter(requireContext(), this@FollowingFragment)
+        adapter = UserSearchAdapter(context = requireContext(), listener = this@FollowerFragment)
 
         binding.apply {
-            rvUserFollowing.layoutManager = LinearLayoutManager(context)
-            rvUserFollowing.adapter = adapter
+            rvUserFollower.layoutManager = LinearLayoutManager(context)
+            rvUserFollower.adapter = adapter
         }
 
         return binding.root
@@ -48,43 +48,42 @@ class FollowingFragment : Fragment(), UserSearchAdapter.Listener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        followingFragmentViewModel = ViewModelProvider(this).get(FollowingFragmentViewModel::class.java)
+        followerFragmentViewModel = ViewModelProvider(this).get(FollowerFragmentViewModel::class.java)
 
         arguments?.apply {
+
             getString("username")?.let {
-                observerDataUserFollowing(username = it)
+                observeDataUserFollower(username = it)
             }
         }
     }
 
-    private fun observerDataUserFollowing(username: String) {
+    private fun observeDataUserFollower(username: String) {
         binding.apply {
-            pbLoadFollowing.show()
-            layoutEmptyDataFollowing.hide()
-            layoutFailedFollowing.hide()
+            pbLoadFollower.show()
+            layoutFailedFollower.hide()
+            layoutEmptyDataFollower.hide()
         }
-        followingFragmentViewModel.getFollowingUser(username = username).observe(
+        followerFragmentViewModel.getFollowerUser(username = username).observe(
             viewLifecycleOwner, Observer { status ->
                 when(status.status){
                     Status.Type.SUCCESS -> {
                         status.data.apply {
                             if (this!!.isNotEmpty()){
-                                binding.apply {
-                                    pbLoadFollowing.hide()
-                                }
+                                binding.pbLoadFollower.hide()
                                 adapter.setUserSearchData(this)
                             }else {
                                 binding.apply {
-                                    pbLoadFollowing.hide()
-                                    layoutEmptyDataFollowing.show()
+                                    pbLoadFollower.hide()
+                                    layoutEmptyDataFollower.show()
                                 }
                             }
                         }
                     }
                     Status.Type.FAILED -> {
                         binding.apply {
-                            pbLoadFollowing.hide()
-                            layoutFailedFollowing.show()
+                            pbLoadFollower.hide()
+                            layoutFailedFollower.show()
                         }
                     }
                 }
@@ -93,18 +92,18 @@ class FollowingFragment : Fragment(), UserSearchAdapter.Listener {
     }
 
     companion object {
-        var TAG = FollowingFragment::class.java.simpleName
-
-        fun newInstance(username: String): FollowingFragment {
+        fun newInstance(username: String): FollowerFragment {
             val bundle = Bundle().apply {
                 putString("username", username)
             }
 
-            return FollowingFragment()
+            return FollowerFragment()
                 .apply {
                 arguments = bundle
             }
         }
+
+        var TAG = FollowerFragment::class.java.simpleName
     }
 
     override fun onUserClickListenre(view: View, data: SearchResponse) {

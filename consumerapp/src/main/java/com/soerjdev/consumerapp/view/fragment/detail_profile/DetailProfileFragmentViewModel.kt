@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp.view.detail_profile
+package com.soerjdev.consumerapp.view.fragment.detail_profile
 
 import android.app.Application
 import android.content.Context

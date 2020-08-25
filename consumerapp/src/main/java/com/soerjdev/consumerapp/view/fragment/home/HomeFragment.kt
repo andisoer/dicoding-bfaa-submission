@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp.view.home
+package com.soerjdev.consumerapp.view.fragment.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -21,7 +21,7 @@ import com.soerjdev.consumerapp.data.adapter.FavoriteUserAdapter
 import com.soerjdev.consumerapp.databinding.FragmentHomeBinding
 import com.soerjdev.consumerapp.utils.hide
 import com.soerjdev.consumerapp.utils.show
-import com.soerjdev.consumerapp.view.home.HomeFragmentDirections
+import com.soerjdev.consumerapp.view.fragment.home.HomeFragmentDirections
 
 class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuItemClickListener {
 

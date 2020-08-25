@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp.view.home
+package com.soerjdev.consumerapp.view.fragment.home
 
 import android.app.Application
 import android.content.Context
