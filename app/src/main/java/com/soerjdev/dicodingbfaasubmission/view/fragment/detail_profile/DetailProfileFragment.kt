@@ -113,7 +113,9 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         when {
             userDetailModel != null -> {
                 val userString = Gson().toJson(userDetailModel)
+                Log.d(TAG, "addToUsersFavorite: $userString")
                 favoriteUserModel = Gson().fromJson(userString, FavoriteModel::class.java)
+                Log.d(TAG, "addToUsersFavorite: $favoriteUserModel")
                 when {
                     favoriteUserModel != null -> {
                         detailProfileFragmentViewModel.insertFavoriteUsers(user = favoriteUserModel!!, context = requireContext())
@@ -180,6 +182,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         }
 
         userDetailModel = userDetail
+        Log.d(TAG, "setData: $userDetail")
     }
 
     companion object {

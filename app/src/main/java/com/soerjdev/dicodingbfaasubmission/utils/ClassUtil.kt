@@ -7,73 +7,73 @@ import java.util.ArrayList
 
 fun ContentValues.toFavoriteModel(): FavoriteModel =
     FavoriteModel(
-        avatarUrl = getAsString(COLUMN_avatar_url),
+        avatar_url = getAsString(COLUMN_avatar_url),
         bio = getAsString(COLUMN_bio),
         blog = getAsString(COLUMN_blog),
         company = getAsString(COLUMN_company),
-        createdAt = getAsString(COLUMN_created_at),
+        created_at = getAsString(COLUMN_created_at),
         email =  getAsString(COLUMN_email),
-        eventsUrl = getAsString(COLUMN_events_url),
+        events_url = getAsString(COLUMN_events_url),
         followers = getAsInteger(COLUMN_followers),
-        followersUrl = getAsString(COLUMN_followers_url),
+        followers_url = getAsString(COLUMN_followers_url),
         following = getAsInteger(COLUMN_following),
-        followingUrl = getAsString(COLUMN_following_url),
-        gistsUrl = getAsString(COLUMN_gists_url),
-        gravatarId = getAsString(COLUMN_gravatar_id),
+        following_url = getAsString(COLUMN_following_url),
+        gists_url = getAsString(COLUMN_gists_url),
+        gravatar_id = getAsString(COLUMN_gravatar_id),
         hireable = getAsString(COLUMN_hireable),
-        htmlUrl = getAsString(COLUMN_html_url),
+        html_url = getAsString(COLUMN_html_url),
         id = getAsInteger(COLUMN_id),
         location = getAsString(COLUMN_location),
         login = getAsString(COLUMN_login),
         name = getAsString(COLUMN_name),
-        nodeId = getAsString(COLUMN_node_id),
-        organizationsUrl = getAsString(COLUMN_organizations_url),
-        publicGists = getAsInteger(COLUMN_public_gists),
-        publicRepos = getAsInteger(COLUMN_public_repos) ,
-        receivedEventsUrl = getAsString(COLUMN_received_events_url),
-        reposUrl = getAsString(COLUMN_repos_url),
-        siteAdmin = getAsBoolean(COLUMN_site_admin),
-        starredUrl = getAsString(COLUMN_starred_url),
-        subscriptionsUrl = getAsString(COLUMN_subscriptions_url),
-        twitterUsername = getAsString(COLUMN_twitter_username),
+        node_id = getAsString(COLUMN_node_id),
+        organizations_url = getAsString(COLUMN_organizations_url),
+        public_gists = getAsInteger(COLUMN_public_gists),
+        public_repos = getAsInteger(COLUMN_public_repos) ,
+        received_events_url = getAsString(COLUMN_received_events_url),
+        repos_url = getAsString(COLUMN_repos_url),
+        site_admin = getAsBoolean(COLUMN_site_admin),
+        starred_url = getAsString(COLUMN_starred_url),
+        subscriptions_url = getAsString(COLUMN_subscriptions_url),
+        twitter_username = getAsString(COLUMN_twitter_username),
         type =  getAsString(COLUMN_type),
-        updatedAt = getAsString(COLUMN_updated_at),
+        updated_at = getAsString(COLUMN_updated_at),
         url = getAsString(COLUMN_url)
     )
 
 fun FavoriteModel.toContentValues(): ContentValues =
     ContentValues().apply {
-        put(COLUMN_avatar_url, avatarUrl)
+        put(COLUMN_avatar_url, avatar_url)
         put(COLUMN_bio, bio)
         put(COLUMN_blog, blog)
         put(COLUMN_company, company)
-        put(COLUMN_created_at, createdAt)
+        put(COLUMN_created_at, created_at)
         put(COLUMN_email, email)
-        put(COLUMN_events_url, eventsUrl)
+        put(COLUMN_events_url, events_url)
         put(COLUMN_followers, followers)
-        put(COLUMN_followers_url, followersUrl)
+        put(COLUMN_followers_url, followers_url)
         put(COLUMN_following, following)
-        put(COLUMN_following_url, followingUrl)
-        put(COLUMN_gists_url, gistsUrl)
-        put(COLUMN_gravatar_id, gravatarId)
+        put(COLUMN_following_url, following_url)
+        put(COLUMN_gists_url, gists_url)
+        put(COLUMN_gravatar_id, gravatar_id)
         put(COLUMN_hireable, hireable)
-        put(COLUMN_html_url, htmlUrl)
+        put(COLUMN_html_url, html_url)
         put(COLUMN_id, id)
         put(COLUMN_location, location)
         put(COLUMN_login, login)
         put(COLUMN_name, name)
-        put(COLUMN_node_id, nodeId)
-        put(COLUMN_organizations_url, organizationsUrl)
-        put(COLUMN_public_gists, publicGists)
-        put(COLUMN_public_repos, publicRepos)
-        put(COLUMN_received_events_url, eventsUrl)
-        put(COLUMN_repos_url, reposUrl)
-        put(COLUMN_site_admin, siteAdmin)
-        put(COLUMN_starred_url, starredUrl)
-        put(COLUMN_subscriptions_url, subscriptionsUrl)
-        put(COLUMN_twitter_username, twitterUsername)
+        put(COLUMN_node_id, node_id)
+        put(COLUMN_organizations_url, organizations_url)
+        put(COLUMN_public_gists, public_gists)
+        put(COLUMN_public_repos, public_repos)
+        put(COLUMN_received_events_url, events_url)
+        put(COLUMN_repos_url, repos_url)
+        put(COLUMN_site_admin, site_admin)
+        put(COLUMN_starred_url, starred_url)
+        put(COLUMN_subscriptions_url, subscriptions_url)
+        put(COLUMN_twitter_username, twitter_username)
         put(COLUMN_type, type)
-        put(COLUMN_updated_at, updatedAt)
+        put(COLUMN_updated_at, updated_at)
         put(COLUMN_url, url)
     }
 

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [FavoriteModel::class],
-    version = 2,
+    version = 4,
     exportSchema = true
 ) abstract class AppLocalDatabase: RoomDatabase() {
 

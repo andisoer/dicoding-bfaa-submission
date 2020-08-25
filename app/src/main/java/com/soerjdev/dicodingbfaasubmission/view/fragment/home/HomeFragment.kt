@@ -55,10 +55,7 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
 
             edtSearchHome.setOnEditorActionListener { v, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH){
-                    if (!edtSearchHome.text.isBlank()){
-                        observeDataUserSearch(edtSearchHome.text.toString())
-                        true
-                    }
+                    searchUser()
                 }
                 false
             }

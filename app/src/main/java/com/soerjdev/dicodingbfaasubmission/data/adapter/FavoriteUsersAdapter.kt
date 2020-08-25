@@ -39,7 +39,7 @@ class FavoriteUsersAdapter (private val context: Context, private val listener: 
             containerView.tvUsernameItemUser.text = item.login
             containerView.tvUserTypeItemUser.text = item.type
             Glide.with(containerView.context)
-                .load(item.avatarUrl)
+                .load(item.avatar_url)
                 .circleCrop()
                 .into(containerView.ivItemUser)
         }
