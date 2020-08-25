@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivBeginSearch"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/something_wrong"
+        android:src="@drawable/ic_undraw_notify_re_65on"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/something_wrong_please_try_again"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_below="@+id/ivBeginSearch"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

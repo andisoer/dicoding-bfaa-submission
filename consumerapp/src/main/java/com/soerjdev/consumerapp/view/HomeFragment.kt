@@ -13,19 +13,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.soerjdev.consumerapp.view.HomeFragmentDirections
 import com.soerjdev.consumerapp.data.model.FavoriteModel
 import com.soerjdev.consumerapp.R
-import com.soerjdev.consumerapp.data.adapter.UserSearchAdapter
+import com.soerjdev.consumerapp.data.adapter.FavoriteUserAdapter
 import com.soerjdev.consumerapp.databinding.FragmentHomeBinding
 import com.soerjdev.consumerapp.utils.hide
 import com.soerjdev.consumerapp.utils.show
 
-class HomeFragment : Fragment(), UserSearchAdapter.Listener, Toolbar.OnMenuItemClickListener {
+class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuItemClickListener {
 
     private lateinit var homeFragmentViewModel: HomeFragmentViewModel
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var adapter : UserSearchAdapter
+    private lateinit var adapter : FavoriteUserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +39,7 @@ class HomeFragment : Fragment(), UserSearchAdapter.Listener, Toolbar.OnMenuItemC
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_home, container, false)
 
-        adapter = UserSearchAdapter(
+        adapter = FavoriteUserAdapter(
             requireContext(),
             this@HomeFragment
         )
