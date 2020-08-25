@@ -20,4 +20,7 @@
     <string name="explore_github_users">Explore Github Users</string>
     <string name="c_follower">%1$d Follower</string>
     <string name="c_following">%1$d Following</string>
+    <string name="about">About</string>
+    <string name="copyright_2020_andi_surya">Copyright © 2020 Andi Surya</string>
+    <string name="about_description">This app was made for completing the BFAA Courses @ dicoding.com. With purpose to implement components such as Content Provider, Localization, Alarm Manager, Local Database, Notification and etc. You can use this app source code as reference.</string>
 </resources>

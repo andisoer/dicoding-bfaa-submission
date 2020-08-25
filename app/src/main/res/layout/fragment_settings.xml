@@ -22,6 +22,15 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/settings"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"/>
+
             <LinearLayout
                 android:id="@+id/containerChangeLanguageSetting"
                 android:layout_width="match_parent"
@@ -34,7 +43,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
-                    android:text="@string/change_language"/>
+                    android:text="@string/change_language"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"/>
 
                 <ImageView
                     android:layout_width="20dp"
@@ -63,6 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:text="@string/daily_reminder"/>
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
@@ -72,6 +83,32 @@
                     android:layout_weight="1"/>
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/about"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:text="@string/about_description"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:text="@string/copyright_2020_andi_surya"
+                android:layout_gravity="center_horizontal"/>
 
         </LinearLayout>
 

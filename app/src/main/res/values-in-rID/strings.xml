@@ -20,4 +20,7 @@
     <string name="hello_blank_fragment">Hello Fragment Kosong</string>
     <string name="c_follower">%1$d Pengikut</string>
     <string name="c_following">%1$d Mengikuti</string>
+    <string name="about">About</string>
+    <string name="copyright_2020_andi_surya">Copyright © 2020 Andi Surya</string>
+    <string name="about_description">Aplikasi ini dibuat untuk menyelesaikan kursus BFAA @ dicoding.com. Dengan tujuan untuk mengimplementasikan beberapa komponen sepertio Content Provider, Localization, Alarm Manager, Local Database, Notification, dan lain lain. Anda bisa menggunakan Source Code Aplikasi ini untuk referensi.</string>
 </resources>
