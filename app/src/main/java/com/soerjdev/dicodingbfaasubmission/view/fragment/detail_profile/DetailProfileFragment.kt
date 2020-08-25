@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 import com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile.DetailProfileFragmentArgs
@@ -24,6 +25,7 @@ import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentDetailProfileBinding
 import com.soerjdev.dicodingbfaasubmission.utils.hide
 import com.soerjdev.dicodingbfaasubmission.utils.show
+import kotlinx.android.synthetic.main.item_user.view.*
 
 class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
@@ -171,6 +173,10 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             tvFollowerCountDetailProfile.text = getString(R.string.c_follower, userDetail.followers)
             tvFollowingDetailProfile.text = getString(R.string.c_following, userDetail.following)
             tvBioDetailProfile.text = userDetail.bio
+            Glide.with(requireContext())
+                .load(userDetail.avatarUrl)
+                .circleCrop()
+                .into(ivUserDetailProfile)
         }
 
         userDetailModel = userDetail
