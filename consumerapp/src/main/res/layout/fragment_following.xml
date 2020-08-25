@@ -8,16 +8,30 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvUserFollower"
+            android:id="@+id/rvUserFollowing"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_user"/>
 
         <ProgressBar
-            android:id="@+id/pbLoadFollower"
+            android:id="@+id/pbLoadFollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"/>
+
+        <include
+            android:id="@+id/layoutEmptyDataFollowing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/layout_empty_data"
+            android:visibility="gone"/>
+
+        <include
+            android:id="@+id/layoutFailedFollowing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/layout_warning"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 
