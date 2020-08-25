@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp.view
+package com.soerjdev.consumerapp.view.detail_profile
 
 import android.os.Bundle
 import android.util.Log
@@ -13,10 +13,10 @@ import com.google.gson.Gson
 import com.soerjdev.consumerapp.R
 import com.soerjdev.consumerapp.data.adapter.ProfileViewPagerAdapter
 import com.soerjdev.consumerapp.data.model.FavoriteModel
-import com.soerjdev.consumerapp.data.model.UserDetail
 import com.soerjdev.consumerapp.databinding.FragmentDetailProfileBinding
 import com.soerjdev.consumerapp.utils.hide
 import com.soerjdev.consumerapp.utils.show
+import com.soerjdev.consumerapp.view.DetailProfileFragmentArgs
 
 class DetailProfileFragment : Fragment() {
 
@@ -46,8 +46,12 @@ class DetailProfileFragment : Fragment() {
         detailProfileFragmentViewModel = ViewModelProvider(this).get(DetailProfileFragmentViewModel::class.java)
 
         arguments?.let { bundle ->
-            val username = DetailProfileFragmentArgs.fromBundle(bundle).username
-            val data = DetailProfileFragmentArgs.fromBundle(bundle).userDetail
+            val username = DetailProfileFragmentArgs.fromBundle(
+                bundle
+            ).username
+            val data = DetailProfileFragmentArgs.fromBundle(
+                bundle
+            ).userDetail
 
             Log.d(TAG, "onViewCreated: $username")
             Log.d(TAG, "onViewCreated: $data")

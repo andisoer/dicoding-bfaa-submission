@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp.view
+package com.soerjdev.consumerapp.view.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -21,6 +21,7 @@ import com.soerjdev.consumerapp.data.adapter.FavoriteUserAdapter
 import com.soerjdev.consumerapp.databinding.FragmentHomeBinding
 import com.soerjdev.consumerapp.utils.hide
 import com.soerjdev.consumerapp.utils.show
+import com.soerjdev.consumerapp.view.HomeFragmentDirections
 
 class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuItemClickListener {
 
@@ -92,7 +93,11 @@ class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuIte
     }
 
     override fun onUserClickListenre(view: View, data: FavoriteModel) {
-        val navigation = HomeFragmentDirections.actionHomeFragmentToDetailProfileFragment(data.login, data)
+        val navigation =
+            HomeFragmentDirections.actionHomeFragmentToDetailProfileFragment(
+                data.login,
+                data
+            )
         view.findNavController().navigate(navigation)
     }
 

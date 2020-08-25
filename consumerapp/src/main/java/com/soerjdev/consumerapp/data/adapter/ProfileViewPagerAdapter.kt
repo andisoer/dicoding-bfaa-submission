@@ -2,8 +2,8 @@ package com.soerjdev.consumerapp.data.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.soerjdev.consumerapp.view.FollowerFragment
-import com.soerjdev.consumerapp.view.FollowingFragment
+import com.soerjdev.consumerapp.view.detail_profile.FollowerFragment
+import com.soerjdev.consumerapp.view.detail_profile.FollowingFragment
 
 class ProfileViewPagerAdapter(fragment: Fragment, private var username: String) : FragmentStateAdapter(fragment) {
 

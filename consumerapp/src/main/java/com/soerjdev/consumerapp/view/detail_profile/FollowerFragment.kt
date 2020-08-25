@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp.view
+package com.soerjdev.consumerapp.view.detail_profile
 
 import android.os.Bundle
 import android.util.Log
@@ -11,9 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.soerjdev.consumerapp.R
-import com.soerjdev.consumerapp.data.adapter.FavoriteUserAdapter
 import com.soerjdev.consumerapp.data.adapter.UserSearchAdapter
-import com.soerjdev.consumerapp.data.model.FavoriteModel
 import com.soerjdev.consumerapp.data.model.SearchResponse
 import com.soerjdev.consumerapp.data.model.Status
 import com.soerjdev.consumerapp.databinding.FragmentFollowerBinding
@@ -99,7 +97,8 @@ class FollowerFragment : Fragment(), UserSearchAdapter.Listener {
                 putString("username", username)
             }
 
-            return FollowerFragment().apply {
+            return FollowerFragment()
+                .apply {
                 arguments = bundle
             }
         }

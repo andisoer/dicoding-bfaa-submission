@@ -1,4 +1,4 @@
-package com.soerjdev.consumerapp.view
+package com.soerjdev.consumerapp.view.detail_profile
 
 import android.os.Bundle
 import android.util.Log
@@ -100,7 +100,8 @@ class FollowingFragment : Fragment(), UserSearchAdapter.Listener {
                 putString("username", username)
             }
 
-            return FollowingFragment().apply {
+            return FollowingFragment()
+                .apply {
                 arguments = bundle
             }
         }

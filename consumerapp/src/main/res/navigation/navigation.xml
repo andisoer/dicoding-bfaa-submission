@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.soerjdev.consumerapp.view.HomeFragment"
+        android:name="com.soerjdev.consumerapp.view.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailProfileFragment"
-        android:name="com.soerjdev.consumerapp.view.DetailProfileFragment"
+        android:name="com.soerjdev.consumerapp.view.detail_profile.DetailProfileFragment"
         android:label="fragment_detail_profile"
         tools:layout="@layout/fragment_detail_profile" >
         <argument
