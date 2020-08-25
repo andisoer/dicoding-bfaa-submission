@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.soerjdev.consumerapp.data.model.FavoriteModel
 import com.soerjdev.consumerapp.R
 import kotlinx.android.extensions.LayoutContainer
@@ -37,6 +38,10 @@ class FavoriteUserAdapter (private val context: Context, private val listener: L
         fun bindItem(item: FavoriteModel) {
             containerView.tvUsernameItemUser.text = item.login
             containerView.tvUserTypeItemUser.text = item.name
+            Glide.with(containerView.context)
+                .load(item.avatarUrl)
+                .circleCrop()
+                .into(containerView.ivItemUser)
         }
     }
 

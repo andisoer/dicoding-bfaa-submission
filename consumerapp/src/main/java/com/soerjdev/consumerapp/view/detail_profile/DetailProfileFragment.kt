@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 import com.soerjdev.consumerapp.R
@@ -145,6 +146,10 @@ class DetailProfileFragment : Fragment() {
             tvFollowerCountDetailProfile.text = getString(R.string.c_follower, favoriteModel.followers)
             tvFollowingDetailProfile.text = getString(R.string.c_following, favoriteModel.following)
             tvBioDetailProfile.text = favoriteModel.bio
+            Glide.with(requireContext())
+                .load(favoriteModel.avatarUrl)
+                .circleCrop()
+                .into(ivUserDetailProfile)
         }
 
     }

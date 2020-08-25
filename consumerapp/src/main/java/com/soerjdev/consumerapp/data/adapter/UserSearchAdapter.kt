@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.soerjdev.consumerapp.R
 import com.soerjdev.consumerapp.data.model.SearchResponse
 import kotlinx.android.extensions.LayoutContainer
@@ -37,6 +38,10 @@ class UserSearchAdapter (private val context: Context, private val listener: Lis
         fun bindItem(item: SearchResponse) {
             containerView.tvUsernameItemUser.text = item.login
             containerView.tvUserTypeItemUser.text = item.type
+            Glide.with(containerView.context)
+                .load(item.avatarUrl)
+                .circleCrop()
+                .into(containerView.ivItemUser)
         }
     }
 
