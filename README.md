@@ -6,19 +6,19 @@ This repository containt my last and final submission for [Dicoding BFAA Course]
 ## Screenshots
 <h3 align="center"> Search Screen </h3>
 <p align="center">
-    <img src="assets/app-search-waiting.png"
+    <img src="screenshots/home-app.png"
         alt="Home (app Module)"    
         style="margin-right: 10px;"    
         width="200" />
-    <img src="assets/app-search.png"
+    <img src="screenshots/detail-app.png"
         alt="Detail Profile (app Module)"    
         style="margin-right: 10px;"    
         width="200" />
-    <img src="assets/app-search-error.png"
+    <img src="screenshots/settings-app.png"
         alt="Settings (app Module)"    
         style="margin-right: 10px;"    
         width="200" />
-    <img src="assets/search.gif?raw=true"
+    <img src="screenshots/home-consumerapp"
         alt="Home (consumerapp Module)"    
         style="margin-right: 10px;"    
         width="200" />
