@@ -5,42 +5,6 @@ import android.database.Cursor
 import com.soerjdev.consumerapp.data.model.FavoriteModel
 import java.util.*
 
-fun ContentValues.toFavoriteModel(): FavoriteModel =
-    FavoriteModel(
-        avatarUrl = getAsString(COLUMN_avatar_url),
-        bio = getAsString(COLUMN_bio),
-        blog = getAsString(COLUMN_blog),
-        company = getAsString(COLUMN_company),
-        createdAt = getAsString(COLUMN_created_at),
-        email = getAsString(COLUMN_email),
-        eventsUrl = getAsString(COLUMN_events_url),
-        followers = getAsInteger(COLUMN_followers),
-        followersUrl = getAsString(COLUMN_followers_url),
-        following = getAsInteger(COLUMN_following),
-        followingUrl = getAsString(COLUMN_following_url),
-        gistsUrl = getAsString(COLUMN_gists_url),
-        gravatarId = getAsString(COLUMN_gravatar_id),
-        hireable = getAsString(COLUMN_hireable),
-        htmlUrl = getAsString(COLUMN_html_url),
-        id = getAsInteger(COLUMN_id),
-        location = getAsString(COLUMN_location),
-        login = getAsString(COLUMN_login),
-        name = getAsString(COLUMN_name),
-        nodeId = getAsString(COLUMN_node_id),
-        organizationsUrl = getAsString(COLUMN_organizations_url),
-        publicGists = getAsInteger(COLUMN_public_gists),
-        publicRepos = getAsInteger(COLUMN_public_repos),
-        receivedEventsUrl = getAsString(COLUMN_received_events_url),
-        reposUrl = getAsString(COLUMN_repos_url),
-        siteAdmin = getAsBoolean(COLUMN_site_admin),
-        starredUrl = getAsString(COLUMN_starred_url),
-        subscriptionsUrl = getAsString(COLUMN_subscriptions_url),
-        twitterUsername = getAsString(COLUMN_twitter_username),
-        type = getAsString(COLUMN_type),
-        updatedAt = getAsString(COLUMN_updated_at),
-        url = getAsString(COLUMN_url)
-    )
-
 fun FavoriteModel.toContentValues(): ContentValues =
     ContentValues().apply {
         put(COLUMN_avatar_url, avatarUrl)

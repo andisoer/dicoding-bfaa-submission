@@ -24,23 +24,12 @@ class FollowerFragment : Fragment(), UserSearchAdapter.Listener {
     private lateinit var binding: FragmentFollowerBinding
     private lateinit var adapter: UserSearchAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<FragmentFollowerBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_follower, container, false)
-
-        adapter = UserSearchAdapter(context = requireContext(), listener = this@FollowerFragment)
-
-        binding.apply {
-            rvUserFollower.layoutManager = LinearLayoutManager(context)
-            rvUserFollower.adapter = adapter
-        }
 
         return binding.root
     }
@@ -48,6 +37,10 @@ class FollowerFragment : Fragment(), UserSearchAdapter.Listener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        init()
+    }
+
+    private fun init() {
         followerFragmentViewModel = ViewModelProvider(this).get(FollowerFragmentViewModel::class.java)
 
         arguments?.apply {
@@ -55,6 +48,13 @@ class FollowerFragment : Fragment(), UserSearchAdapter.Listener {
             getString("username")?.let {
                 observeDataUserFollower(username = it)
             }
+        }
+
+        adapter = UserSearchAdapter(context = requireContext(), listener = this@FollowerFragment)
+
+        binding.apply {
+            rvUserFollower.layoutManager = LinearLayoutManager(context)
+            rvUserFollower.adapter = adapter
         }
     }
 

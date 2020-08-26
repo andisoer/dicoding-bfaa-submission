@@ -1,7 +1,6 @@
 package com.soerjdev.consumerapp.view.fragment.detail_profile
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,20 +28,24 @@ class DetailProfileFragment : Fragment() {
 
     private var favoriteUserModel: FavoriteModel? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentDetailProfileBinding>(inflater, R.layout.fragment_detail_profile, container, false)
-
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_detail_profile, container, false)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        init()
+    }
+
+    private fun init() {
         detailProfileFragmentViewModel = ViewModelProvider(this).get(DetailProfileFragmentViewModel::class.java)
 
         arguments?.let { bundle ->
@@ -52,9 +55,6 @@ class DetailProfileFragment : Fragment() {
             val data = DetailProfileFragmentArgs.fromBundle(
                 bundle
             ).userDetail
-
-            Log.d(TAG, "onViewCreated: $username")
-            Log.d(TAG, "onViewCreated: $data")
 
             profileViewPagerAdapter = ProfileViewPagerAdapter(fragment = this, username = username!!)
 
@@ -70,7 +70,6 @@ class DetailProfileFragment : Fragment() {
             tbFragmentDetailProfile.setNavigationOnClickListener {
                 activity?.onBackPressed()
             }
-//            tbFragmentDetailProfile.setOnMenuItemClickListener(this@DetailProfileFragment)
 
             viewPagerDetailProfile.adapter = profileViewPagerAdapter
 
@@ -91,8 +90,6 @@ class DetailProfileFragment : Fragment() {
                 }).attach()
 
         }
-
-        return binding.root
     }
 
     private fun removeFromUsersFavorite() {

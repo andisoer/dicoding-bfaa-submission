@@ -24,23 +24,12 @@ class FollowingFragment : Fragment(), UserSearchAdapter.Listener {
     private lateinit var binding: FragmentFollowingBinding
     private lateinit var adapter: UserSearchAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<FragmentFollowingBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_following, container, false)
-
-        adapter = UserSearchAdapter(requireContext(), this@FollowingFragment)
-
-        binding.apply {
-            rvUserFollowing.layoutManager = LinearLayoutManager(context)
-            rvUserFollowing.adapter = adapter
-        }
 
         return binding.root
     }
@@ -48,7 +37,18 @@ class FollowingFragment : Fragment(), UserSearchAdapter.Listener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        init()
+    }
+
+    private fun init() {
         followingFragmentViewModel = ViewModelProvider(this).get(FollowingFragmentViewModel::class.java)
+
+        adapter = UserSearchAdapter(requireContext(), this@FollowingFragment)
+
+        binding.apply {
+            rvUserFollowing.layoutManager = LinearLayoutManager(context)
+            rvUserFollowing.adapter = adapter
+        }
 
         arguments?.apply {
             getString("username")?.let {

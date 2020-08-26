@@ -3,7 +3,6 @@ package com.soerjdev.consumerapp.view.fragment.home
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -28,11 +27,6 @@ class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuIte
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter : FavoriteUserAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +35,19 @@ class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuIte
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_home, container, false)
 
+        setHasOptionsMenu(true)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        init()
+
+    }
+
+    private fun init() {
         adapter = FavoriteUserAdapter(
             requireContext(),
             this@HomeFragment
@@ -52,10 +59,6 @@ class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuIte
             rvUserListHome.layoutManager = LinearLayoutManager(context)
             rvUserListHome.adapter = adapter
         }
-
-        setHasOptionsMenu(true)
-
-        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -79,7 +82,6 @@ class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuIte
                             } else {
                                 adapter.notifyDataSetChanged()
                                 layoutEmptyDataHome.show()
-                                Log.d(TAG, "onViewCreated: empty")
                             }
                         }
                     }
