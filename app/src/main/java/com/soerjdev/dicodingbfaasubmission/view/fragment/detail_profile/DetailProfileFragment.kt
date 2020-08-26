@@ -2,13 +2,13 @@ package com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -17,10 +17,10 @@ import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 import com.soerjdev.dicodingbfaasubmission.R
-import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
 import com.soerjdev.dicodingbfaasubmission.data.adapter.ProfileViewPagerAdapter
 import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
+import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentDetailProfileBinding
 import com.soerjdev.dicodingbfaasubmission.utils.hide
 import com.soerjdev.dicodingbfaasubmission.utils.show

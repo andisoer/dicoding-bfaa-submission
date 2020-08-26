@@ -2,7 +2,6 @@ package com.soerjdev.dicodingbfaasubmission.utils
 
 import android.app.Activity
 import android.content.Context
-import android.hardware.input.InputManager
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment

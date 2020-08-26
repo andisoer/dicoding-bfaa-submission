@@ -4,14 +4,14 @@ import android.content.Context
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
-import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
-import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.data.api.ApiEndPoints
 import com.soerjdev.dicodingbfaasubmission.data.api.apiRequest
 import com.soerjdev.dicodingbfaasubmission.data.api.httpClient
 import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteDao
 import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
+import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
+import com.soerjdev.dicodingbfaasubmission.data.model.Status
+import com.soerjdev.dicodingbfaasubmission.data.model.UserDetail
 import com.soerjdev.dicodingbfaasubmission.utils.FAVORITE_URI
 import com.soerjdev.dicodingbfaasubmission.utils.toContentValues
 import com.soerjdev.dicodingbfaasubmission.utils.toFavoriteModel

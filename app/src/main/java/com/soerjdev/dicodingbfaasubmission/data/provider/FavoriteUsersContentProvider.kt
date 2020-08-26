@@ -1,7 +1,6 @@
 package com.soerjdev.dicodingbfaasubmission.data.provider
 
 import android.content.ContentProvider
-import android.content.ContentUris
 import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
@@ -9,7 +8,6 @@ import android.net.Uri
 import android.util.Log
 import androidx.core.net.toUri
 import com.soerjdev.dicodingbfaasubmission.data.database.AppLocalDatabase
-import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteDao
 import com.soerjdev.dicodingbfaasubmission.utils.FAVORITE_URI
 import com.soerjdev.dicodingbfaasubmission.utils.URI_AUTHORITY
 import com.soerjdev.dicodingbfaasubmission.utils.toFavoriteModel

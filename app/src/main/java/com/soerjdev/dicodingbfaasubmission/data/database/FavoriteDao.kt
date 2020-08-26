@@ -1,7 +1,6 @@
 package com.soerjdev.dicodingbfaasubmission.data.database
 
 import android.database.Cursor
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy

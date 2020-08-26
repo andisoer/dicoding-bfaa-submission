@@ -3,7 +3,7 @@ package com.soerjdev.consumerapp.utils
 import android.content.ContentValues
 import android.database.Cursor
 import com.soerjdev.consumerapp.data.model.FavoriteModel
-import java.util.ArrayList
+import java.util.*
 
 fun ContentValues.toFavoriteModel(): FavoriteModel =
     FavoriteModel(

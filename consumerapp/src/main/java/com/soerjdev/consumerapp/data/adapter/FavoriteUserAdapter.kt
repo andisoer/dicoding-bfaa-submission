@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.soerjdev.consumerapp.data.model.FavoriteModel
 import com.soerjdev.consumerapp.R
+import com.soerjdev.consumerapp.data.model.FavoriteModel
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_user.view.*
 

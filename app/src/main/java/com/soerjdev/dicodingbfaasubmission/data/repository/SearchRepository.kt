@@ -4,10 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.soerjdev.dicodingbfaasubmission.data.api.ApiEndPoints
-import com.soerjdev.dicodingbfaasubmission.data.model.UserSearch
 import com.soerjdev.dicodingbfaasubmission.data.api.apiRequest
 import com.soerjdev.dicodingbfaasubmission.data.api.httpClient
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
+import com.soerjdev.dicodingbfaasubmission.data.model.UserSearch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

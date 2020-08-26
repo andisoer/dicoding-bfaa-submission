@@ -3,7 +3,7 @@ package com.soerjdev.dicodingbfaasubmission.utils
 import android.content.ContentValues
 import android.database.Cursor
 import com.soerjdev.dicodingbfaasubmission.data.database.FavoriteModel
-import java.util.ArrayList
+import java.util.*
 
 fun ContentValues.toFavoriteModel(): FavoriteModel =
     FavoriteModel(

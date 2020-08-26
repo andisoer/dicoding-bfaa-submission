@@ -1,10 +1,8 @@
 package com.soerjdev.dicodingbfaasubmission.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.soerjdev.dicodingbfaasubmission.R

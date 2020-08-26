@@ -4,14 +4,14 @@ import android.content.Context
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.soerjdev.consumerapp.data.api.apiRequest
+import com.soerjdev.consumerapp.data.api.httpClient
 import com.soerjdev.consumerapp.data.model.FavoriteModel
 import com.soerjdev.consumerapp.data.model.SearchResponse
 import com.soerjdev.consumerapp.data.model.Status
 import com.soerjdev.consumerapp.utils.FAVORITE_URI
 import com.soerjdev.consumerapp.utils.toContentValues
 import com.soerjdev.dicodingbfaasubmission.data.api.ApiEndPoints
-import com.soerjdev.consumerapp.data.api.apiRequest
-import com.soerjdev.consumerapp.data.api.httpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -2,11 +2,11 @@ package com.soerjdev.consumerapp.view.fragment.detail_profile
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
@@ -17,7 +17,6 @@ import com.soerjdev.consumerapp.data.model.FavoriteModel
 import com.soerjdev.consumerapp.databinding.FragmentDetailProfileBinding
 import com.soerjdev.consumerapp.utils.hide
 import com.soerjdev.consumerapp.utils.show
-import com.soerjdev.consumerapp.view.fragment.detail_profile.DetailProfileFragmentArgs
 
 class DetailProfileFragment : Fragment() {
 

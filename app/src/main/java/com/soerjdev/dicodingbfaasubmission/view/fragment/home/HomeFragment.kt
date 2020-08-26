@@ -2,23 +2,22 @@ package com.soerjdev.dicodingbfaasubmission.view.fragment.home
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.soerjdev.dicodingbfaasubmission.*
-import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
+import com.soerjdev.dicodingbfaasubmission.R
 import com.soerjdev.dicodingbfaasubmission.data.adapter.UserSearchAdapter
+import com.soerjdev.dicodingbfaasubmission.data.model.SearchResponse
 import com.soerjdev.dicodingbfaasubmission.data.model.Status
 import com.soerjdev.dicodingbfaasubmission.databinding.FragmentHomeBinding
 import com.soerjdev.dicodingbfaasubmission.utils.hide

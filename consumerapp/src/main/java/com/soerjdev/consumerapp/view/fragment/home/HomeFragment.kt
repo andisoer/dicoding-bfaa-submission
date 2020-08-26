@@ -4,24 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.soerjdev.consumerapp.data.model.FavoriteModel
 import com.soerjdev.consumerapp.R
 import com.soerjdev.consumerapp.data.adapter.FavoriteUserAdapter
+import com.soerjdev.consumerapp.data.model.FavoriteModel
 import com.soerjdev.consumerapp.databinding.FragmentHomeBinding
 import com.soerjdev.consumerapp.utils.hide
 import com.soerjdev.consumerapp.utils.show
-import com.soerjdev.consumerapp.view.fragment.home.HomeFragmentDirections
 
 class HomeFragment : Fragment(), FavoriteUserAdapter.Listener, Toolbar.OnMenuItemClickListener {
 
