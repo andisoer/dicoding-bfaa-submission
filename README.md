@@ -18,7 +18,7 @@ This repository containt my last and final submission for [Dicoding BFAA Course]
         alt="Settings (app Module)"    
         style="margin-right: 10px;"    
         width="200" />
-    <img src="screenshots/home-consumerapp"
+    <img src="screenshots/home-consumerapp.png"
         alt="Home (consumerapp Module)"    
         style="margin-right: 10px;"    
         width="200" />
