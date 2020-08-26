@@ -1,7 +1,7 @@
 # dicoding-bfaa-submission
 ![Platform](https://img.shields.io/badge/platform-Android-green.svg) ![Kotlin](https://img.shields.io/badge/kotlin-1.3.72-blue.svg) ![Gradle](https://img.shields.io/badge/gradle-4.0.1-%2366DCB8.svg)
 
-This repository containt my last and final submission for [Dicoding BFAA Course](https://www.dicoding.com/academies/14) which impelement Android Widget or Component such as Content Provider, Local Database, Localization, Notification, Alarm Manager, and MVVM Architecture. This repo also include 2 modules (app & consumerapp) which each module must comunicate each other using Content Provider.
+This repository containt my last and final submission for [Dicoding BFAA Course](https://www.dicoding.com/academies/14) which impelement Android Widget or Component such as Content Provider, Local Database, Localization, Notification, Alarm Manager, and MVVM Architecture. This repo also include 2 modules (app & consumerapp) with each module must comnunicate each other using Content Provider.
 
 ## Screenshots
 <p align="center">
@@ -39,7 +39,7 @@ This repository containt my last and final submission for [Dicoding BFAA Course]
   
 ## Tech Stacks 🛠
 - Kotlin (Programming Language)
-- Room (Local Database built on top of SQLite)
+- Room (Layer build on top of SQLite)
 - Content Provider
 - Alarm Manager
 - Notification (for Alarm Manager)
@@ -49,4 +49,4 @@ This repository containt my last and final submission for [Dicoding BFAA Course]
 - Glide (Image Loading Library)
 
 ## Support ❤️
-Giving start to this repository would really appreciated :D
+Star this repository would be really appreciated :D
