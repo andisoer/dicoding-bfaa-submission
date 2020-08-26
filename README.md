@@ -48,3 +48,6 @@ This repository containt my last and final submission for [Dicoding BFAA Course]
 - Jetpack Navigation Component
 - Retrofit (Network Library)
 - Glide (Image Loading Library)
+
+## Support ❤️
+Giving start to this repository would really appreciated :D
