@@ -1,7 +1,6 @@
 package com.soerjdev.dicodingbfaasubmission.view.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -30,9 +29,6 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter : UserSearchAdapter
 
-    companion object {
-        var TAG = HomeFragment::class.java.simpleName
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,27 +38,6 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_home, container, false)
 
-        adapter = UserSearchAdapter(requireContext(), this@HomeFragment)
-
-        binding.apply {
-            tbFragmentHome.setOnMenuItemClickListener(this@HomeFragment)
-
-            ivSearchHome.setOnClickListener {
-                hideKeyboard()
-                searchUser()
-            }
-
-            edtSearchHome.setOnEditorActionListener { v, actionId, event ->
-                if (actionId == EditorInfo.IME_ACTION_SEARCH){
-                    searchUser()
-                }
-                false
-            }
-
-            rvUserListHome.layoutManager = LinearLayoutManager(context)
-            rvUserListHome.adapter = adapter
-        }
-
         setHasOptionsMenu(true)
 
         return binding.root
@@ -71,28 +46,23 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        Log.d(TAG, "onActivityCreated()")
         observeDataUserSearch(binding.edtSearchHome.text.toString())
     }
 
     private fun searchUser() {
         binding.apply {
             if (!edtSearchHome.text.isBlank()){
-//                pbLoadHome.show()
                 rvUserListHome.hide()
                 layoutBeginSearchHome.hide()
                 layoutEmptyDataHome.hide()
                 layoutFailed.hide()
                 pbLoadHome.show()
                 observeDataUserSearch(edtSearchHome.text.toString())
-                Log.d(TAG, "searchUser()")
             }
         }
     }
 
     private fun observeDataUserSearch(query: String) {
-//        Log.d(TAG, "observeDataUserSearch() query : $query")
-        Log.d(TAG, "observeDataUserSearch: pb showing ${binding.pbLoadHome.isShown}")
         homeFragmentViewModel.getUserBySearch(query = query).observe(
             viewLifecycleOwner, Observer {  status ->
                 when (status.status) {
@@ -114,8 +84,6 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
                                 }
                             }
                         }
-//                        binding.pbLoadHome.hide()
-                        Log.d(TAG, "observeDataUserSearch: pb showing ${binding.pbLoadHome.isShown}")
                     }
                     Status.Type.FAILED -> {
                         binding.apply {
@@ -123,9 +91,6 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
                             pbLoadHome.hide()
                             layoutFailed.show()
                         }
-                        Log.d(TAG, "observeDataUserSearch: ${status.message}")
-//                        binding.pbLoadHome.hide()
-                        Log.d(TAG, "observeDataUserSearch: pb showing ${binding.pbLoadHome.isShown}")
                     }
                 }
             }
@@ -139,6 +104,28 @@ class HomeFragment : Fragment(), Toolbar.OnMenuItemClickListener, UserSearchAdap
     }
 
     private fun init() {
+
+        adapter = UserSearchAdapter(requireContext(), this@HomeFragment)
+
+        binding.apply {
+            tbFragmentHome.setOnMenuItemClickListener(this@HomeFragment)
+
+            ivSearchHome.setOnClickListener {
+                hideKeyboard()
+                searchUser()
+            }
+
+            edtSearchHome.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                    searchUser()
+                }
+                false
+            }
+
+            rvUserListHome.layoutManager = LinearLayoutManager(context)
+            rvUserListHome.adapter = adapter
+        }
+
         homeFragmentViewModel = ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
     }
 

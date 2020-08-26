@@ -26,7 +26,5 @@ class DetailProfileFragmentViewModel(application: Application): AndroidViewModel
         detailProfileRepository.deleteFavorite(user_id = user_id, context = context)
     }
 
-//    fun selectFavoriteUser(user_id: Int): LiveData<List<FavoriteModel>> = detailProfileRepository.getDetailUser(user_id = user_id)
-
     fun selectFavoriteUser(user_id: Int, context: Context) = detailProfileRepository.getDetailUser(user_id = user_id, context = context)
 }

@@ -1,7 +1,6 @@
 package com.soerjdev.dicodingbfaasubmission.view.fragment.favorite
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -37,9 +36,22 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate<FragmentFavoriteBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_favorite, container, false)
 
+        setHasOptionsMenu(true)
+
+        return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        init()
+    }
+
+    private fun init() {
         adapter = FavoriteUsersAdapter(requireContext(), this)
 
         binding.apply {
@@ -54,16 +66,8 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
 
         }
 
-        setHasOptionsMenu(true)
-
-        return binding.root
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         favoriteViewModel = ViewModelProvider(this).get(FavoriteFragmentViewModel::class.java)
+
         observeFavoriteUsersList()
     }
 
@@ -79,7 +83,6 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
                             } else {
                                 adapter.notifyDataSetChanged()
                                 layoutEmptyDataFavorite.show()
-                                Log.d(TAG, "onViewCreated: empty")
                             }
                         }
                     }
@@ -97,9 +100,5 @@ class FavoriteFragment : Fragment(), Toolbar.OnMenuItemClickListener,
         val userDetail = Gson().fromJson(tempUserDetail, UserDetail::class.java)
         val navigation = FavoriteFragmentDirections.actionFavoriteFragmentToDetailProfileFragment(userDetail.login, userDetail)
         view.findNavController().navigate(navigation)
-    }
-
-    companion object {
-        var TAG = FavoriteFragment::class.java.simpleName
     }
 }

@@ -1,6 +1,5 @@
 package com.soerjdev.dicodingbfaasubmission.data.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.soerjdev.dicodingbfaasubmission.data.api.ApiEndPoints
@@ -19,17 +18,10 @@ class SearchRepository {
 
     fun getUserBySearch(query: String): LiveData<Status<UserSearch>> {
 
-        Log.d(TAG, "getUserBySearch: query input $query")
-        Log.d(TAG, "getUserBySearch: query repository : ${queryData.value}")
-
         if (query.isNotBlank()){
             queryData.value = query
-            Log.d(TAG, "getUserBySearch: before check")
-            Log.d(TAG, "getUserBySearch: ${queryData.value.toString()}")
 
             liveData = MutableLiveData<Status<UserSearch>>()
-
-            Log.d(TAG, "getUserBySearch: after check")
 
             val httpClient = httpClient()
             val apiRequest = apiRequest<ApiEndPoints>(httpClient)

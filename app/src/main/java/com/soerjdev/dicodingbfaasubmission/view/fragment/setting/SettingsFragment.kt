@@ -68,8 +68,4 @@ class SettingsFragment : Fragment() {
             sharedPrefHelper.disabledAlarm()
         }
     }
-
-    companion object {
-
-    }
 }

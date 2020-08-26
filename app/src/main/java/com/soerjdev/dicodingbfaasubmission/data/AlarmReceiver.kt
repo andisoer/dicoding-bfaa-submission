@@ -4,15 +4,11 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import com.soerjdev.dicodingbfaasubmission.view.MainActivity
 
 class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
-
-        Log.d(TAG, "onReceive()")
-
         val title = intent?.getStringExtra("title")
         val message = intent?.getStringExtra("message")
 

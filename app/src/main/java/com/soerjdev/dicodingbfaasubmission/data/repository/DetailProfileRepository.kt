@@ -157,7 +157,6 @@ class DetailProfileRepository(private val favoriteDao: FavoriteDao) {
         val uri = "$FAVORITE_URI/$user_id".toUri()
 
         context.contentResolver.delete(uri, null, null)
-//        favoriteDao.deleteUser(user_id = user_id)
     }
 
     fun getDetailUser(user_id: Int, context: Context): LiveData<Status<FavoriteModel>>{

@@ -24,29 +24,29 @@ class FollowerFragment : Fragment(), UserSearchAdapter.Listener {
     private lateinit var binding: FragmentFollowerBinding
     private lateinit var adapter: UserSearchAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<FragmentFollowerBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_follower, container, false)
-
-        adapter = UserSearchAdapter(requireContext(), this@FollowerFragment)
-
-        binding.apply {
-            rvUserFollower.layoutManager = LinearLayoutManager(context)
-            rvUserFollower.adapter = adapter
-        }
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        init()
+    }
+
+    private fun init() {
+        adapter = UserSearchAdapter(requireContext(), this@FollowerFragment)
+
+        binding.apply {
+            rvUserFollower.layoutManager = LinearLayoutManager(context)
+            rvUserFollower.adapter = adapter
+        }
 
         followerFragmentViewModel = ViewModelProvider(this).get(FollowerFragmentViewModel::class.java)
 

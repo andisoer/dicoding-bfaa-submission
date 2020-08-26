@@ -1,7 +1,6 @@
 package com.soerjdev.dicodingbfaasubmission.view.fragment.detail_profile
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -47,14 +46,21 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_detail_profile, container, false)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        init()
+    }
+
+    private fun init() {
         detailProfileFragmentViewModel = ViewModelProvider(this).get(DetailProfileFragmentViewModel::class.java)
 
         arguments?.let { bundle ->
             val username = DetailProfileFragmentArgs.fromBundle(bundle).username
             val data = DetailProfileFragmentArgs.fromBundle(bundle).userDetail
-
-            Log.d(TAG, "onViewCreated: $username")
-            Log.d(TAG, "onViewCreated: $data")
 
             profileViewPagerAdapter = ProfileViewPagerAdapter(fragment = this, username = username)
 
@@ -91,18 +97,15 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
             TabLayoutMediator(tabLayoutDetailProfile, viewPagerDetailProfile,
                 TabLayoutMediator.TabConfigurationStrategy {
-                    tab, position -> tab.text = tabTitle[position]
-            }).attach()
+                        tab, position -> tab.text = tabTitle[position]
+                }).attach()
 
         }
-
-        return binding.root
     }
 
     private fun removeFromUsersFavorite() {
         when {
             favoriteUserModel != null -> {
-                Log.d(TAG, "removeFromUsersFavorite: removed")
                 detailProfileFragmentViewModel.deleteFavoriteUsers(user_id = favoriteUserModel!!.id, context = requireContext())
                 binding.fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 favoriteUserModel = null
@@ -115,9 +118,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         when {
             userDetailModel != null -> {
                 val userString = Gson().toJson(userDetailModel)
-                Log.d(TAG, "addToUsersFavorite: $userString")
                 favoriteUserModel = Gson().fromJson(userString, FavoriteModel::class.java)
-                Log.d(TAG, "addToUsersFavorite: $favoriteUserModel")
                 when {
                     favoriteUserModel != null -> {
                         binding.fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_24)
@@ -130,12 +131,10 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     }
 
     private fun observeIsUserFavorite() {
-        Log.d(TAG, "observeIsUserFavorite()")
         binding.apply {
             userDetailModel?.let {
                 detailProfileFragmentViewModel.selectFavoriteUser(user_id = it.id, context = requireContext()).observe(
                     viewLifecycleOwner, Observer { status ->
-                        Log.d(TAG, "observeIsUserFavorite: ${status.status}")
                         isFavorite = when(status.status){
                             Status.Type.SUCCESS -> {
                                 favoriteUserModel = status.data
@@ -151,17 +150,6 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                 )
             }
         }
-
-//        binding.apply {
-//            when {
-//                favoriteUserModel != null -> {
-//                    fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_24)
-//                }
-//                else -> {
-//                    fabFavoriteDetailProfile.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-//                }
-//            }
-//        }
     }
 
     private fun observeDataDetailProfile(username: String) {
@@ -175,7 +163,7 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
                         }
                     }
                     Status.Type.FAILED -> {
-                        Log.d(TAG, "observeDataDetailProfile: failed")
+                        //Failed to get Detail Profile
                     }
                 }
             }
@@ -208,11 +196,6 @@ class DetailProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         userDetailModel = userDetail
         observeIsUserFavorite()
-        Log.d(TAG, "setData: $userDetail")
-    }
-
-    companion object {
-        var TAG = DetailProfileFragment::class.java.simpleName
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {

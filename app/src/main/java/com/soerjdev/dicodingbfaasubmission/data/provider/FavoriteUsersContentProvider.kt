@@ -5,7 +5,6 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
-import android.util.Log
 import androidx.core.net.toUri
 import com.soerjdev.dicodingbfaasubmission.data.database.AppLocalDatabase
 import com.soerjdev.dicodingbfaasubmission.utils.FAVORITE_URI
@@ -48,8 +47,6 @@ class FavoriteUsersContentProvider : ContentProvider() {
         }
 
         context?.contentResolver?.notifyChange(FAVORITE_URI.toUri(), null)
-
-        Log.d(TAG, "insert: $FAVORITE_URI/$id")
 
         return Uri.parse("$FAVORITE_URI/$id")
     }
