@@ -4,7 +4,6 @@
 This repository containt my last and final submission for [Dicoding BFAA Course](https://www.dicoding.com/academies/14) which impelement Android Widget or Component such as Content Provider, Local Database, Localization, Notification, Alarm Manager, and MVVM Architecture. This repo also include 2 modules (app & consumerapp) which each module must comunicate each other using Content Provider.
 
 ## Screenshots
-<h3 align="center"> Search Screen </h3>
 <p align="center">
     <img src="screenshots/home-app.png"
         alt="Home (app Module)"    
